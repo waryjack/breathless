@@ -145,6 +145,9 @@ export default class BreathlessActorSheet extends ActorSheet {
 
     _onRollDice(e) {
         e.preventDefault();
-        return this.actor.rollDice();
+        let el = e.currentTarget;
+        let id = el.closest(".item").dataset.itemId;
+        
+        return this.actor.rollDice(id);
     }
 }
