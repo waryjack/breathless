@@ -55,8 +55,10 @@ export default class BreathlessActorSheet extends ActorSheet {
         html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
         html.find('.toggle-stress').click(this._onToggleStress.bind(this));
 
-        // Rolling dice
+        // Rolling dice and using items
         html.find('.roll-dice').click(this._onRollDice.bind(this));
+        html.find('.use-special').click(this._onUseSpecial.bind(this));
+        html.find('.use-healing').click(this._onUseHealing.bind(this));
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
@@ -140,7 +142,23 @@ export default class BreathlessActorSheet extends ActorSheet {
     }
 
     _onToggleStress(e) {
-        //placeholder
+        e.preventDefault();
+
+        let el = e.currentTarget;
+        let pos = el.dataset.pos;
+        let currentArray = this.actor.system.stress.states;
+        let currentState = currentArray[pos];
+        let newState = 0;
+
+        if(currentState === 0) {
+            newState = 1
+        } else {
+            newState = 0
+        }
+
+        currentArray[pos] = newState;
+
+        return this.actor.update({["system.stress.states"]:currentArray});
     }
 
     _onRollDice(e) {
@@ -149,5 +167,17 @@ export default class BreathlessActorSheet extends ActorSheet {
         let id = el.closest(".item").dataset.itemId;
         
         return this.actor.rollDice(id);
+    }
+
+    _onUseSpecial(e) {
+
+        return this.actor.useSpecial();
+
+    }
+
+    _onUseHealing(e) {
+
+        return this.actor.useHealing();
+
     }
 }

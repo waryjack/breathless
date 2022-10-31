@@ -1,0 +1,79 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="breathless sheet-header">
+        <div class="breathless header flex-row">
+        
+        <div class="breathless flex-item">
+            <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+        </div>
+        <div class="breathless header flex-item" style="text-align:center"></div>
+            <h1>{{localize "breathless.gen.charactersheet"}}</h1>
+        </div>
+
+    </header>
+    <div class="breathless">
+        <p><h3>NAME</h2><input class="breathless charname" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></p>
+        <p><h3>PRONOUNS</h2><input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/></p>
+        <p><h3>JOB</h2><input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"></p>
+    </div>
+    <div class="breathless flex-row">
+        <h2>SKILLS</h2>
+        <div class="breathless flex-col">
+            <div class="breathless flex-item" id="bl-skill-list">
+                {{#each skills as |skill id|}}
+                    <div class="item-name item" data-item-id="{{skill.id}}">
+                        <h3 style="display:inline">{{skill.name}}</h3>
+                        <span style="border: 2px solid black; padding: 6px; margin-right:12px;">{{skill.system.initial}}</span>
+                        <span style="border: 2px solid black; padding: 6px;"><a class="roll-dice">{{skill.system.current}}</a></span>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="breathless flex-col">
+            <div class="breathless flex-item" id="bl-storage">
+                <h2>BACKPACK</h2>
+                {{#each gear as |gear id|}}
+                    <div class="item-name item" data-item-id="{{gear.id}}">
+                        <h3 style="display:inline">{{gear.name}}</h3>
+                        <span style="border: 2px solid black; padding: 6px; margin-right:12px;">{{gear.system.initial}}</span>
+                        <span style="border: 2px solid black; padding: 6px;"><a class="roll-dice">{{gear.system.current}}</a></span>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="breathless flex-item" id="bl-healing">
+                <h2 style="display:inline;">MEDKIT</h2> 
+                <a class="use-healing">
+                    {{#ife system.healing.used true}}
+                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i>
+                    {{/ife}}
+                    {{#ife system.healing.used false}}
+                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i>
+                    {{/ife}}
+                    </a>
+            </div>
+            <div class="breathless flex-item" id="bl-special">
+                <h2 style="display:inline;">STUNT</h2> 
+                <a class="use-stunt">
+                    {{#ife system.special.used true}}
+                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i>
+                    {{/ife}}
+                    {{#ife system.special.used false}}
+                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i>
+                    {{/ife}}
+                </a>
+            </div>
+        </div>
+        <div class="breathless flex-row">
+            <div class="breathless flex-item">
+            <h2 style="display:inline;">STRESS</h2>
+                {{#each stress.states as |state count|}}
+                    {{#ife state 0}}
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress"><i class="fa-regular fa-circle"></i></a>
+                    {{/ife}}
+                    {{#ife state 1}}
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress"><i class="fa-solid fa-circle"></i></a>
+                    {{/ife}}
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</form>
