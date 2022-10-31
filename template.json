@@ -33,7 +33,13 @@
             "min":0,
             "max":4,
             "current":0,
+            "states":[],
             "vulnerable":false
+        },
+        "storage":{
+            "game_name":"Backpack",
+            "max_items":3,
+            "curr_items":0
         }
     }
 }
