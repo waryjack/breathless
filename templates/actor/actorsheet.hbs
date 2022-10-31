@@ -1,23 +1,47 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="breathless sheet-header">
-        <div class="breathless header flex-row">
+        <div class="breathless header flexrow">
         
         <div class="breathless flex-item">
             <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
         </div>
-        <div class="breathless header flex-item" style="text-align:center"></div>
+        <div class="breathless header flex-item flex3" style="text-align:center"></div>
             <h1>{{localize "breathless.gen.charactersheet"}}</h1>
         </div>
 
     </header>
-    <div class="breathless">
-        <p><h3>NAME</h2><input class="breathless charname" name="name" type="text" value="{{actor.name}}" placeholder="Name"/></p>
-        <p><h3>PRONOUNS</h2><input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/></p>
-        <p><h3>JOB</h2><input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"></p>
+    <div class="breathless flexcol">
+        <div class="flexrow">
+            <div class="flex-item">
+                <h3>NAME</h2>
+            </div>
+            <div class="flex-item flex3" style="border-bottom:2px solid black">
+                <span data-field="name" class="character-name inline-edit" contenteditable>{{actor.name}}</span>
+                <!--input class="breathless charname" name="name" type="text" value="{{actor.name}}" placeholder="Name"/-->
+            </div>
+        </div>
+        <div class="flexrow">
+            <div class="flex-item">
+                <h3>PRONOUNS</h2>
+            </div>
+            <div class="flex-item flex3"  style="border-bottom:2px solid black">
+                <span data-field="system.pronouns" class="character-name inline-edit" contenteditable>{{actor.system.pronouns}}</span>
+                <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
+            </div>
+        </div>
+        <div class="flexrow">
+            <div class="flex-item">
+                <h3>JOB</h2>
+            </div>
+            <div class="flex-item flex3" style="border-bottom:2px solid black">
+               <span data-field="system.job" class="character-name inline-edit" contenteditable>{{actor.system.name}}</span>
+               <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
+            </div>
+        </div>
     </div>
-    <div class="breathless flex-row">
+    <div class="breathless flexrow">
         <h2>SKILLS</h2>
-        <div class="breathless flex-col">
+        <div class="breathless flexcol">
             <div class="breathless flex-item" id="bl-skill-list">
                 {{#each skills as |skill id|}}
                     <div class="item-name item" data-item-id="{{skill.id}}">
@@ -28,7 +52,7 @@
                 {{/each}}
             </div>
         </div>
-        <div class="breathless flex-col">
+        <div class="breathless flexcol">
             <div class="breathless flex-item" id="bl-storage">
                 <h2>BACKPACK</h2>
                 {{#each gear as |gear id|}}
@@ -62,7 +86,7 @@
                 </a>
             </div>
         </div>
-        <div class="breathless flex-row">
+        <div class="breathless flexrow">
             <div class="breathless flex-item">
             <h2 style="display:inline;">STRESS</h2>
                 {{#each stress.states as |state count|}}
