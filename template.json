@@ -1,0 +1,39 @@
+{
+    "Item":{
+        "types": ["skill", "gear"],
+        "skill":{
+            "initial":"d4",
+            "current":"d4",
+            "minimum":"d4",
+            "notes":""
+        },   
+        "gear":{
+            "initial":"d6",
+            "current":"d6",
+            "minimum":"d6",
+            "notes":""
+        }
+    },
+    "Actor":{
+        "pronouns":"",
+        "job":{
+            "name":"",
+            "notes":""
+        },
+        "special":{
+            "game_name":"Stunt",
+            "used":false,
+            "die":"d12"
+        },
+        "healing":{
+            "game_name":"Medkit",
+            "used":false
+        },
+        "stress":{
+            "min":0,
+            "max":4,
+            "current":0,
+            "vulnerable":false
+        }
+    }
+}
