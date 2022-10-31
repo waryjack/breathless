@@ -9,4 +9,4 @@ export const registerSettings = function() {
         default: true,
     });
 
-   }
+}
