@@ -26,6 +26,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
         let charItems = this.actor.items;
 
+        charData.actor = this.actor;
         charData.skills = charItems.filter(i => i.type === "skill");
         charData.gear = charItems.filter(i => i.type === "gear");
         charData.special = this.actor.system.special;
@@ -33,6 +34,7 @@ export class BreathlessActorSheet extends ActorSheet {
         charData.stress = this.actor.system.stress;
         charData.name = this.actor.name;
         charData.pronouns = this.actor.system.pronouns;
+        charData.job = this.actor.system.job;
         charData.healing = this.actor.system.healing;
         // charData.useHealing = (get system setting here)
     }
