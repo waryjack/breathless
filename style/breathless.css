@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Londrina+Solid&family=Permanent+Marker&display=swap');
+
+.csf {
+   
+   font-family: 'Permanent Marker', cursive;
+
+}
+
+.csh {
+    font-family: 'Londrina Solid', cursive;
+}
+
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -12,7 +24,6 @@
 h1,h2,h3,h4,h5 {
     border:none;
     text-decoration:none;
-    text-transform:uppercase;
 }
 
 .bg-blue {
@@ -41,15 +52,31 @@ h1,h2,h3,h4,h5 {
 
 .charsheet-line {
     border-bottom:2px solid black;
+    font-size:1.5em;
 }
 
 .charsheet-box {
-    border: 2px solid black;
-    padding:6px;
+    border: 2px dotted rgb(61, 61, 61);
+    padding-left:6px;
+    padding-right:6px;
+    padding-top:3px;
+    padding-bottom:0px;
+    margin-right:6px;
+    text-align:center;
+    font-size:1.5em;
 }
 
 .item {
     margin-bottom:12px;
+}
+
+.caps {
+    text-transform:uppercase;
+}
+
+.ja {
+    align-content:flex-start;
+    justify-content:flex-start;
 }
 /* .breathless .flex-col {
     display:flex;

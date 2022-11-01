@@ -1,0 +1,26 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="breathless sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+    </header>
+        </div>
+    </header>
+    <div class="breathless flexrow">
+        <h4>Initial Die</h4>
+        <select name="system.initial" id="initial">
+                        {{#select initial}}
+                        <option value="d6">d6</option>
+                        <option value="d8">d8</option>
+                        <option value="d12">d12</option>
+                        {{/select}}
+        </select>
+        <h4>Current Die</h4>
+        <select name="system.current" id="current">
+                    {{#select current}}
+                    <option value="d6">d6</option>
+                    <option value="d8">d8</option>
+                    <option value="d12">d12</option>
+                    {{/select}}
+        </select>
+    </div>
+</form>

@@ -7,6 +7,22 @@ export class BreathlessActor extends Actor {
     prepareBaseData() {
         super.prepareBaseData();
         const charData = this.system;
+
+       this.prepareCharacterData(charData);
+    }
+
+    prepareCharacterData(charData){
+        super.prepareDerivedData();
+        let strStates = this.system.stress.states;
+        console.log("Stress states: ", strStates);
+
+        if(strStates[0] == true && strStates[1] == true && strStates[2] == true && strStates[3] == true) {
+            this.system.stress.vulnerable = true;
+        } else {
+            this.system.stress.vulnerable = false;
+        }
+
+
     }
 
     rollDice(id) {
@@ -17,7 +33,6 @@ export class BreathlessActor extends Actor {
         // find the item's current die value, and roll it
         let item = this.items.get(id);
         let die = item.system.current;
-        let type = item.type;
         let r = new Roll("1"+die).evaluate({async:false});
         let result = r.total;
 
@@ -51,12 +66,18 @@ export class BreathlessActor extends Actor {
     }
 
     useSpecial() {
+        // Allow it to toggle back to an unused state with a simple click
+        if (this.system.special.used === true) {
+            this.update({"system.special.used":false});
+            return;
+        }
+
+        let outcome = "";
+
+        // if NOT used, then roll dice and toggle to "used"
         let r = new Roll("1d12").evaluate({async:false});
         let result = r.total;
-
-        // step the die value down until reset
-        let newDiceVal = this.stepDown(id);
-        item.update({"system.current":newDiceVal});
+        let die = "d12";
 
         // determine the level of success
         if (result >= 5) {
@@ -71,7 +92,7 @@ export class BreathlessActor extends Actor {
 
         let dialogData = {
             roll_name: this.system.special.game_name,
-            roll_type: item.type,
+            roll_type: "",
             roll_die: die,
             roll_result: result,
             roll_outcome: outcome,
@@ -84,7 +105,8 @@ export class BreathlessActor extends Actor {
     }
 
     useHealing() {
-        this.update({"system.healing.used":true});
+        let healToggle = this.system.healing.used;
+        this.update({"system.healing.used":!healToggle});
     }
 
     stepDown(id) {
@@ -92,6 +114,7 @@ export class BreathlessActor extends Actor {
         let iType = item.type;
         let stepdown = "";
 
+        console.log("Item: ", item, "type: ", iType);
         if(iType === "gear") {
             let current = item.system.current;
             switch (current) {
@@ -123,6 +146,44 @@ export class BreathlessActor extends Actor {
         return stepdown;
     }
 
+    catchBreath() {
+        let stress = this.system.stress;
+        let states = stress.states;
+        let skills = this.items;
+
+        // reset all skills to initial levels
+        skills.forEach(s => {
+            let init = s.system.initial;
+            s.update({"system.current":init});
+        });
+
+
+        // clear 1 stress
+        console.log("stress states in catchBreath: ", states);
+        if(states[3] == true) {
+            states[3] = false;
+        } else if (states[2] == true) {
+            states[2] = false;
+        } else if (states[1] == true) {
+            states[1] = false;
+        } else if (states[0] == true) {
+            states[0] = false;
+        }
+        console.log("stress states in catchBreath 2: ", states);
+        this.update({"stress.states":states});
+        this.sheet.render(true);
+
+
+        // notify GM that it happened
+        ChatMessage.create({
+            user:game.user_id,
+            speaker: ChatMessage.getSpeaker(),
+            content: "Has caught their breath, reset skills, and removed 1 stress."
+        });
+        
+
+
+    }
 
     outputChatMessage(data) {
         let template = 'systems/breathless/templates/msg/chatmessage.hbs';

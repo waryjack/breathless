@@ -25,7 +25,7 @@ export class BreathlessActorSheet extends ActorSheet {
         charData.config = CONFIG.BREATHLESS;
 
         let charItems = this.actor.items;
-
+        console.log("Actor: ", this.actor);
         charData.actor = this.actor;
         charData.skills = charItems.filter(i => i.type === "skill");
         charData.gear = charItems.filter(i => i.type === "gear");
@@ -36,7 +36,11 @@ export class BreathlessActorSheet extends ActorSheet {
         charData.pronouns = this.actor.system.pronouns;
         charData.job = this.actor.system.job;
         charData.healing = this.actor.system.healing;
+
+        console.log("Chardata name, pronouns, job: ", charData.name, charData.pronouns, charData.job.name);
         // charData.useHealing = (get system setting here)
+
+        return charData;
     }
 
     /**
@@ -54,13 +58,15 @@ export class BreathlessActorSheet extends ActorSheet {
         html.find('.item-delete').click(this._onDeleteItem.bind(this));
 
         // Inline editing
-        // html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
+        html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
+        html.find('.inline-edit-item').blur(this._onInlineEditItem.bind(this));
         html.find('.toggle-stress').click(this._onToggleStress.bind(this));
 
         // Rolling dice and using items
         html.find('.roll-dice').click(this._onRollDice.bind(this));
         html.find('.use-special').click(this._onUseSpecial.bind(this));
         html.find('.use-healing').click(this._onUseHealing.bind(this));
+        html.find('.catch-breath').click(this._onCatchBreath.bind(this));
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
@@ -90,7 +96,7 @@ export class BreathlessActorSheet extends ActorSheet {
     }
 
     _onEditItem(e) {
-        e.prevenDefault();
+        e.preventDefault();
 
         let el = e.currentTarget;
         let id = el.closest(".item").dataset.itemId;
@@ -134,14 +140,28 @@ export class BreathlessActorSheet extends ActorSheet {
 
     _onInlineEdit(e) {
         e.preventDefault();
+        console.log("fired inline edit method");
 
         let el = e.currentTarget;
         // let id = el.closest(".item").dataset.itemId;
         let field = el.dataset.field;
         // let item = this.actor.items.get(id);
-
-        return item.update({[field]:el.value});
+        console.log("Edited actor field, new value: ", field, el.innerText);
+        return this.actor.update({[field]:el.innerText});
     }
+
+    _onInlineEditItem(e) {
+        e.preventDefault();
+        console.log("fired inline edit item method");
+
+        let el = e.currentTarget;
+        let id = el.closest(".item").dataset.itemId;
+        let field = el.dataset.field;
+        let item = this.actor.items.get(id);
+        console.log("Edited item field, new value: ", field, el.innerText);
+        return item.update({[field]:el.innerText});
+    }
+
 
     _onToggleStress(e) {
         e.preventDefault();
@@ -152,14 +172,14 @@ export class BreathlessActorSheet extends ActorSheet {
         let currentState = currentArray[pos];
         let newState = 0;
 
-        if(currentState === 0) {
-            newState = 1
+        if(currentState === false) {
+            newState = true;
         } else {
-            newState = 0
+            newState = false;
         }
 
         currentArray[pos] = newState;
-
+       
         return this.actor.update({["system.stress.states"]:currentArray});
     }
 
@@ -172,14 +192,20 @@ export class BreathlessActorSheet extends ActorSheet {
     }
 
     _onUseSpecial(e) {
-
+        e.preventDefault();
         return this.actor.useSpecial();
 
     }
 
     _onUseHealing(e) {
+        e.preventDefault();
 
         return this.actor.useHealing();
 
+    }
+
+    _onCatchBreath(e) {
+        e.preventDefault();
+        return this.actor.catchBreath();
     }
 }

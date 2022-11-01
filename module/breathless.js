@@ -30,7 +30,7 @@ Hooks.once("init", () => {
     Actors.unregisterSheet("core", ActorSheet);
     Items.unregisterSheet("core", ItemSheet);
 
-    Actors.registerSheet("breathless", BreathlessActorSheet, { makeDefault:true});
+    Actors.registerSheet("breathless", BreathlessActorSheet, { types:["pc"], makeDefault:true});
     Items.registerSheet("breathless", BreathlessItemSheet, { makeDefault: true});
     
     CONFIG.Actor.documentClass = BreathlessActor;

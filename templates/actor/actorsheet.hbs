@@ -1,92 +1,95 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="breathless charsheet-section sheet-header">
         <div class="breathless header flexrow">
-        
-            <div class="breathless flex0 bg-blue">
-                <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
-            </div>
-            <div class="breathless header flex3 bg-green" style="text-align:center">
-                <h1>{{localize "breathless.gen.charactersheet"}}</h1>
+            <div class="breathless header" style="text-align:center">
+                <h1 class="caps csh">{{localize "breathless.gen.charactersheet"}}</h1>
             </div>
         </div>
-
+   {{log "Actor in charsheet" actor}}
     </header>
-    <div class="breathless charsheet-section flexcol bg-yellow">
+    <div class="breathless charsheet-section flexcol csf">
         <div class="flexrow">
-                <h3>NAME</h3>
-                <span style="border-bottom:2px solid black;" name="name" class="character-name inline-edit flex3" contenteditable>{{name}}</span>
+                <h2 class="csh">NAME</h2>
+                <span style="border-bottom:2px solid black;" data-field="name" class="charsheet-line inline-edit flex3" contenteditable>{{name}}</span>
         </div>
         <div class="flexrow"> 
-                <h3>PRONOUNS</h3>
-                <span style="border-bottom:2px solid black;" name="system.pronouns" class="character-name inline-edit flex3" contenteditable>{{pronouns}}</span>
+                <h2 class="csh">PRONOUNS</h2>
+                <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="charsheet-line inline-edit flex3" contenteditable>{{pronouns}}</span>
                 <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
         </div>
         <div class="flexrow">
-                <h3>JOB</h3>
-               <span style="border-bottom:2px solid black;" name="system.job" class="character-name inline-edit flex3" contenteditable>{{job}}</span>
+                <h2 class="csh">JOB</h2>
+               <span style="border-bottom:2px solid black;" data-field="system.job.name" class="charsheet-line inline-edit flex3" contenteditable>{{job.name}}</span>
                <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
         </div>
     </div>
-    <div class="breathless charsheet-section flexrow bg-gray">
-        <h2>SKILLS</h2>
-        <div class="breathless flexcol">
-            
+    <div class="breathless charsheet-section flexrow">
+        
+        <div class="breathless flexcol csf" style="margin-right:24px">
+        <h2 class="csh">SKILLS</h2>    
                 {{#each skills as |skill id|}}
-                    <div class="item-name item" data-item-id="{{skill.id}}">
-                        <h3 style="display:inline">{{skill.name}}</h3>
-                        <span style="border: 2px solid black; padding: 6px; margin-right:12px;">{{skill.system.initial}}</span>
-                        <span style="border: 2px solid black; padding: 6px;"><a class="roll-dice">{{skill.system.current}}</a></span>
+                    <div class="item-name item flexrow" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
+                        <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
+                        <span class="charsheet-box inline-edit-item" data-field="system.initial" contenteditable>{{skill.system.initial}}</span>
+                        <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{skill.system.current}}</a></span>
+                        <span style="color:gray;"><i class="fa-solid fa-pencil"></i><i class="fa-solid fa-trash"></i></span>
                     </div>
                 {{/each}}
             
         </div>
         
-        <div class="breathless flexcol">
-                <h2>BACKPACK</h2>
+        <div class="breathless flexcol csf" style="justify-content:flex-start !important; align-content:flex-start !important;">
+                <h2 class="csh">BACKPACK</h2>
                 {{#each gear as |gear id|}}
-                    <div class="flexrow item-name item" data-item-id="{{gear.id}}">
-                        <h3 style="display:inline">{{gear.name}}</h3>
-                        <span style="border: 2px solid black; padding: 6px; margin-right:12px;">{{gear.system.initial}}</span>
-                        <span style="border: 2px solid black; padding: 6px;"><a class="roll-dice">{{gear.system.current}}</a></span>
+                    <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
+                        <h3 style="text-transform:uppercase; display:inline">{{gear.name}}</h3>
+                        <span class="charsheet-box inline-edit-item" data-field="system.initial" contenteditable>{{gear.system.initial}}</span>
+                        <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{gear.system.current}}</a></span>
+                        <span style="color:gray"><i class="fa-solid fa-pencil"></i><i class="fa-solid fa-trash"></i></span>
                     </div>
                 {{/each}}
         
-            <div class="breathless flexrow" id="bl-healing">
-                <h2 style="display:inline;">MEDKIT</h2> 
+            <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-healing">
+                <h2 class="csh" style="display:inline;">MEDKIT</h2> 
                 <a class="use-healing">
-                    {{#ife system.healing.used true}}
-                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i>
+                    {{#ife healing.used true}}
+                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
                     {{/ife}}
-                    {{#ife system.healing.used false}}
-                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i>
+                    {{#ife healing.used false}}
+                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i></span>
                     {{/ife}}
                     </a>
             </div>
-            <div class="breathless flexrow" id="bl-special">
-                <h2 style="display:inline;">STUNT</h2> 
-                <a class="use-stunt">
-                    {{#ife system.special.used true}}
-                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i>
+            <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-special">
+                <h2 class="csh" style="display:inline;">STUNT</h2> 
+                <a class="use-special">
+                    {{#ife special.used true}}
+                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
                     {{/ife}}
-                    {{#ife system.special.used false}}
-                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i>
+                    {{#ife special.used false}}
+                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i></span>
                     {{/ife}}
+                </a>
+            </div>
+            <div style="margin:auto;">
+                <a class="catch-breath">
+                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CATCH YOUR BREATH</span>
                 </a>
             </div>
         </div>
         
     </div>
-    <div class="breathless flexrow bg-blue">
+    <div class="breathless flexrow csf" style="align-items:center; gap:6px">
             
-            <h2 style="display:inline;">STRESS</h2>
+            <h2 class="csh flex0">STRESS</h2>
                 {{#each stress.states as |state count|}}
                     {{#ife state 0}}
-                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress"><i class="fa-regular fa-circle"></i></a>
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>
                     {{/ife}}
                     {{#ife state 1}}
-                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress"><i class="fa-solid fa-circle"></i></a>
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-solid fa-circle"></i></a>
                     {{/ife}}
                 {{/each}}
-            
+                {{#if stress.vulnerable}}<span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">VULNERABLE!</span>{{/if}}
         </div>
 </form>

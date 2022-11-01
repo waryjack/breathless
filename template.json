@@ -15,31 +15,34 @@
         }
     },
     "Actor":{
-        "pronouns":"",
-        "job":{
-            "name":"",
-            "notes":""
-        },
-        "special":{
-            "game_name":"Stunt",
-            "used":false,
-            "die":"d12"
-        },
-        "healing":{
-            "game_name":"Medkit",
-            "used":false
-        },
-        "stress":{
-            "min":0,
-            "max":4,
-            "current":0,
-            "states":[],
-            "vulnerable":false
-        },
-        "storage":{
-            "game_name":"Backpack",
-            "max_items":3,
-            "curr_items":0
+        "types":["pc"],
+        "pc":{
+            "pronouns":"",
+            "job":{
+                "name":"",
+                "notes":""
+            },
+            "special":{
+                "game_name":"Stunt",
+                "used":false,
+                "die":"d12"
+            },
+            "healing":{
+                "game_name":"Medkit",
+                "used":false
+            },
+            "stress":{
+                "min":0,
+                "max":4,
+                "current":0,
+                "states":[false,false,false,false],
+                "vulnerable":false
+            },
+            "storage":{
+                "game_name":"Backpack",
+                "max_items":3,
+                "curr_items":0
+            }
         }
     }
 }
