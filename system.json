@@ -19,7 +19,7 @@
     ],
     "scripts": [],
     "styles": [
-        "styles/breathless.css"
+        "style/breathless.css"
     ],
     "languages": [
         {
