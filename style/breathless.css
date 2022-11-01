@@ -12,6 +12,7 @@
 h1,h2,h3,h4,h5 {
     border:none;
     text-decoration:none;
+    text-transform:uppercase;
 }
 
 .bg-blue {
@@ -47,6 +48,9 @@ h1,h2,h3,h4,h5 {
     padding:6px;
 }
 
+.item {
+    margin-bottom:12px;
+}
 /* .breathless .flex-col {
     display:flex;
     flex-flow:column nowrap;
