@@ -26,26 +26,28 @@
     <div class="breathless charsheet-section flexrow">
         
         <div class="breathless flexcol csf" style="margin-right:24px">
-        <h2 class="csh">SKILLS</h2>    
+        <h1 class="csh">SKILLS</h1>    
                 {{#each skills as |skill id|}}
                     <div class="item-name item flexrow" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
                         <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
-                        <span class="charsheet-box inline-edit-item" data-field="system.initial" contenteditable>{{skill.system.initial}}</span>
+                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial" contenteditable>{{skill.system.initial}}</span>
                         <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{skill.system.current}}</a></span>
-                        <span style="color:gray;"><i class="fa-solid fa-pencil"></i><i class="fa-solid fa-trash"></i></span>
+                        <span style="color:#beb19b;"><a title="Edit {{skill.name}}" class="item-edit item" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                        <a class="item-delete item" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a></span>
                     </div>
                 {{/each}}
-            
         </div>
         
         <div class="breathless flexcol csf" style="justify-content:flex-start !important; align-content:flex-start !important;">
-                <h2 class="csh">BACKPACK</h2>
+                <h1 class="csh">BACKPACK</h1>
                 {{#each gear as |gear id|}}
                     <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
                         <h3 style="text-transform:uppercase; display:inline">{{gear.name}}</h3>
-                        <span class="charsheet-box inline-edit-item" data-field="system.initial" contenteditable>{{gear.system.initial}}</span>
+                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial" contenteditable>{{gear.system.initial}}</span>
                         <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{gear.system.current}}</a></span>
-                        <span style="color:gray"><i class="fa-solid fa-pencil"></i><i class="fa-solid fa-trash"></i></span>
+                        <span style="color:#beb19b;">
+                            <a title="Edit {{gear.name}}" class="item-edit item" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                            <a title="Delete {{gear.name}}" class="item-delete item" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a></span>
                     </div>
                 {{/each}}
         
@@ -71,17 +73,13 @@
                     {{/ife}}
                 </a>
             </div>
-            <div style="margin:auto;">
-                <a class="catch-breath">
-                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CATCH YOUR BREATH</span>
-                </a>
-            </div>
+            
         </div>
         
     </div>
     <div class="breathless flexrow csf" style="align-items:center; gap:6px">
             
-            <h2 class="csh flex0">STRESS</h2>
+            <h1 class="csh flex0">STRESS</h1>
                 {{#each stress.states as |state count|}}
                     {{#ife state 0}}
                         <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>
@@ -91,5 +89,16 @@
                     {{/ife}}
                 {{/each}}
                 {{#if stress.vulnerable}}<span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">VULNERABLE!</span>{{/if}}
+            <div>
+                <a class="catch-breath">
+                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CATCH YOUR BREATH</span>
+                </a>
+            </div>
+            <div>
+                <a class="loot-check">
+                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CHECK FOR LOOT</span>
+                </a>
+            </div>
         </div>
+
 </form>

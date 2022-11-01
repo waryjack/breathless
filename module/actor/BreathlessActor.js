@@ -49,7 +49,7 @@ export class BreathlessActor extends Actor {
             outcome = game.i18n.localize("breathless.gen.success.withcost");
         }
 
-        let image = `<img src="systems/breathless/assets/dice_img/${die}.png" style="border:none" height="48" width="48">`;
+        let image = `<img class="flex0" src="systems/breathless/assets/dice_img/${die}.png" style="border:none" height="48" width="48">`;
 
         let dialogData = {
             roll_name: item.name,
@@ -105,8 +105,35 @@ export class BreathlessActor extends Actor {
     }
 
     useHealing() {
+
+        // allow quick clearing of the toggle without triggering a heal
+        if(this.system.healing.used == true) {
+            this.update({"system.healing.used":false});
+            return;
+        }
+
         let healToggle = this.system.healing.used;
         this.update({"system.healing.used":!healToggle});
+
+        // toggle down at least 2 stress boxes
+        let states = this.system.stress.states;
+        console.log('heal before: ', states);
+        if(states[3] == true && states[2] == true) {
+            states[3] = false;
+            states[2] = false;
+        } else if (states[2] == true && states[1] == true) {
+            states[2] = false;
+            states[1] = false;
+        } else if (states[1] == true && states[0] == true) {
+            states[1] = false;
+            states[0] = false;
+        } else if (states[0] == true) {
+            states[0] = false;
+        }
+
+        console.log('heal after: ', states);
+        this.update({"system.stress.states":states});
+        this.sheet.render(true);
     }
 
     stepDown(id) {
@@ -170,15 +197,16 @@ export class BreathlessActor extends Actor {
             states[0] = false;
         }
         console.log("stress states in catchBreath 2: ", states);
-        this.update({"stress.states":states});
+        this.update({"system.stress.states":states});
         this.sheet.render(true);
 
-
+        let pcname = this.name;
         // notify GM that it happened
         ChatMessage.create({
             user:game.user_id,
-            speaker: ChatMessage.getSpeaker(),
-            content: "Has caught their breath, reset skills, and removed 1 stress."
+            rollMode:'gmroll',
+            whisper: ChatMessage.getWhisperRecipients("GM"),
+            content: `<b>NOTE</b>: ${pcname} used Catch Your Breath.`
         });
         
 
@@ -190,6 +218,7 @@ export class BreathlessActor extends Actor {
         renderTemplate(template, data).then((dlg) => {
             ChatMessage.create({
                 user:game.user_id,
+                
                 speaker: ChatMessage.getSpeaker(),
                 content: dlg
             });

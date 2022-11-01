@@ -67,6 +67,7 @@ export class BreathlessActorSheet extends ActorSheet {
         html.find('.use-special').click(this._onUseSpecial.bind(this));
         html.find('.use-healing').click(this._onUseHealing.bind(this));
         html.find('.catch-breath').click(this._onCatchBreath.bind(this));
+        html.find('.loot-check').click(this._onCheckLoot.bind(this));
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
@@ -110,7 +111,7 @@ export class BreathlessActorSheet extends ActorSheet {
         e.preventDefault();
 
         let el = e.currentTarget;
-        let id = elem.closest(".item").dataset.itemId;
+        let id = el.closest(".item").dataset.itemId;
 
         let d = new Dialog({
             title: game.i18n.localize("breathless.dialogs.delete.title"),
@@ -120,7 +121,7 @@ export class BreathlessActorSheet extends ActorSheet {
               icon: '<i class="fas fa-check"></i>',
               label: game.i18n.localize("breathless.dialogs.labels.yes"),
               callback: () => { 
-                  let itemToDelete = this.actor.items.get(itemId);
+                  let itemToDelete = this.actor.items.get(id);
                   itemToDelete.delete();
                 }
              },
@@ -207,5 +208,16 @@ export class BreathlessActorSheet extends ActorSheet {
     _onCatchBreath(e) {
         e.preventDefault();
         return this.actor.catchBreath();
+    }
+
+    async _onCheckLoot(e) {
+        e.preventDefault();
+        const loot = game.tables.filter(table => table.name === "Loot")[0];
+        if(loot === undefined) {
+            return ui.notifications.error("There is no Loot table set up.")
+        }
+
+        let newLoot = await loot.draw({displayChat:true});
+
     }
 }
