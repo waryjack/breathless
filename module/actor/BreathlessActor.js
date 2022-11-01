@@ -72,6 +72,11 @@ export class BreathlessActor extends Actor {
             return;
         }
 
+        if (game.settings.get("breathless", "special_unrolled")) {
+            this.update({"system.special.used":true});
+            return;
+        } 
+
         let outcome = "";
 
         // if NOT used, then roll dice and toggle to "used"

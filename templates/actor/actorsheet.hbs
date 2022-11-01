@@ -2,7 +2,7 @@
     <header class="breathless charsheet-section sheet-header">
         <div class="breathless header flexrow">
             <div class="breathless header" style="text-align:center">
-                <h1 class="caps csh">{{localize "breathless.gen.charactersheet"}}</h1>
+                <h1 class="caps csh">{{getSetting "cs_title"}}</h1>
             </div>
         </div>
    {{log "Actor in charsheet" actor}}
@@ -26,7 +26,7 @@
     <div class="breathless charsheet-section flexrow">
         
         <div class="breathless flexcol csf" style="margin-right:24px">
-        <h1 class="csh">SKILLS</h1>    
+        <h1 class="csh">{{getSetting "skill_name"}}</h1>    
                 {{#each skills as |skill id|}}
                     <div class="item-name item flexrow" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
                         <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
@@ -39,7 +39,7 @@
         </div>
         
         <div class="breathless flexcol csf" style="justify-content:flex-start !important; align-content:flex-start !important;">
-                <h1 class="csh">BACKPACK</h1>
+                <h1 class="csh">{{getSetting "storage_name"}}</h1>
                 {{#each gear as |gear id|}}
                     <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
                         <h3 style="text-transform:uppercase; display:inline">{{gear.name}}</h3>
@@ -51,8 +51,9 @@
                     </div>
                 {{/each}}
         
+            {{#if (getSetting "enable_healing")}}
             <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-healing">
-                <h2 class="csh" style="display:inline;">MEDKIT</h2> 
+                <h2 class="csh" style="display:inline;">{{getSetting "healing_name"}}</h2> 
                 <a class="use-healing">
                     {{#ife healing.used true}}
                         <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
@@ -62,8 +63,10 @@
                     {{/ife}}
                     </a>
             </div>
+            {{/if}}
+
             <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-special">
-                <h2 class="csh" style="display:inline;">STUNT</h2> 
+                <h2 class="csh" style="display:inline;">{{getSetting "special_name"}}</h2> 
                 <a class="use-special">
                     {{#ife special.used true}}
                         <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
@@ -94,11 +97,13 @@
                     <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CATCH YOUR BREATH</span>
                 </a>
             </div>
+            {{#if (getSetting "enable_lootcheck")}}
             <div>
                 <a class="loot-check">
                     <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CHECK FOR LOOT</span>
                 </a>
             </div>
+            {{/if}}
         </div>
 
 </form>
