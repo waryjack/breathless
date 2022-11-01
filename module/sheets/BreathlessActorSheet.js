@@ -136,9 +136,9 @@ export class BreathlessActorSheet extends ActorSheet {
         e.preventDefault();
 
         let el = e.currentTarget;
-        let id = el.closest(".item").dataset.itemId;
+        // let id = el.closest(".item").dataset.itemId;
         let field = el.dataset.field;
-        let item = this.actor.items.get(id);
+        // let item = this.actor.items.get(id);
 
         return item.update({[field]:el.value});
     }
