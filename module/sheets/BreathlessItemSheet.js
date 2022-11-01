@@ -1,3 +1,3 @@
-export default class BreathlessItemSheet extends ItemSheet {
+export class BreathlessItemSheet extends ItemSheet {
     
 }

@@ -1,6 +1,6 @@
 // Imports
 
-import { preloadHandlebarsTemplates } from "./templates.js";
+// import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSettings } from "./settings.js"; 
 import { BreathlessActor } from "./actor/BreathlessActor.js";
 import { BreathlessItem } from "./item/BreathlessItem.js";
@@ -40,7 +40,7 @@ Hooks.once("init", () => {
     registerSettings();
 
     // Register partials templates
-    preloadHandlebarsTemplates();
+    // preloadHandlebarsTemplates();
 
     // Register handlebar helpers
     Handlebars.registerHelper('ife', function(arg1, arg2, options) {

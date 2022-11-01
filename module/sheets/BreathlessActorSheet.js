@@ -1,4 +1,4 @@
-export default class BreathlessActorSheet extends ActorSheet {
+export class BreathlessActorSheet extends ActorSheet {
     
     get template() {
         return 'systems/breathless/templates/actor/actorsheet.hbs';

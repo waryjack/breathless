@@ -1,4 +1,4 @@
-export default class BreathlessActor extends Actor {
+export class BreathlessActor extends Actor {
  
     /**
      * @override
