@@ -1,32 +1,33 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="breathless sheet-header">
+    <header class="breathless charsheet-section sheet-header">
         <div class="breathless header flexrow">
         
             <div class="breathless bg-blue">
                 <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
             </div>
-            <div class="breathless header flex3 bg-green" style="text-align:center"></div>
+            <div class="breathless header flex3 bg-green" style="text-align:center">
                 <h1>{{localize "breathless.gen.charactersheet"}}</h1>
+            </div>
         </div>
 
     </header>
-    <div class="breathless flexcol bg-yellow">
+    <div class="breathless charsheet-section flexcol bg-yellow">
         <div class="flexrow">
                 <h3>NAME</h3>
-                <span style="border-bottom:2px solid black;" data-field="name" class="character-name inline-edit" contenteditable>{{actor.name}}</span>
+                <span style="border-bottom:2px solid black;" data-field="name" class="character-name inline-edit flex3" contenteditable>{{actor.name}}</span>
         </div>
         <div class="flexrow"> 
                 <h3>PRONOUNS</h3>
-                <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="character-name inline-edit" contenteditable>{{actor.system.pronouns}}</span>
+                <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="character-name inline-edit flex3" contenteditable>{{actor.system.pronouns}}</span>
                 <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
         </div>
         <div class="flexrow">
                 <h3>JOB</h3>
-               <span style="border-bottom:2px solid black;" data-field="system.job" class="character-name inline-edit" contenteditable>{{actor.system.name}}</span>
+               <span style="border-bottom:2px solid black;" data-field="system.job" class="character-name inline-edit flex3" contenteditable>{{actor.system.name}}</span>
                <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
         </div>
     </div>
-    <div class="breathless flexrow bg-gray">
+    <div class="breathless charsheet-section flexrow bg-gray">
         <h2>SKILLS</h2>
         <div class="breathless flexcol">
             

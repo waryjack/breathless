@@ -4,8 +4,14 @@
             box-sizing: border-box;
 }
 
+
 .breathless .window-content {
     background:#f1e9db;
+}
+
+h1,h2,h3,h4,h5 {
+    border:none;
+    text-decoration:none;
 }
 
 .bg-blue {
@@ -21,11 +27,24 @@
 }
 
 .bg-gray {
-    background-color:gray
+    background-color:gray;
 }
 
 .bg-yellow {
-    background-color:yellow'
+    background-color:yellow;
+}
+
+.charsheet-section {
+    margin-bottom:16px;
+}
+
+.charsheet-line {
+    border-bottom:2px solid black;
+}
+
+.charsheet-box {
+    border: 2px solid black;
+    padding:6px;
 }
 
 /* .breathless .flex-col {
