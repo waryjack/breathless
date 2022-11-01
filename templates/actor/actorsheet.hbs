@@ -2,15 +2,15 @@
     <header class="breathless sheet-header">
         <div class="breathless header flexrow">
         
-        <div class="breathless flex-item">
-            <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
-        </div>
-        <div class="breathless header flex-item flex3" style="text-align:center"></div>
-            <h1>{{localize "breathless.gen.charactersheet"}}</h1>
+            <div class="breathless bg-blue">
+                <img class="profile-img" style="min-width:64px !important; min-height:64px !important" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
+            </div>
+            <div class="breathless header flex3 bg-green" style="text-align:center"></div>
+                <h1>{{localize "breathless.gen.charactersheet"}}</h1>
         </div>
 
     </header>
-    <div class="breathless flexcol">
+    <div class="breathless flexcol bg-yellow">
         <div class="flexrow">
                 <h3>NAME</h3>
                 <span style="border-bottom:2px solid black;" data-field="name" class="character-name inline-edit" contenteditable>{{actor.name}}</span>
@@ -26,7 +26,7 @@
                <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
         </div>
     </div>
-    <div class="breathless flexrow">
+    <div class="breathless flexrow bg-gray">
         <h2>SKILLS</h2>
         <div class="breathless flexcol">
             
@@ -73,7 +73,9 @@
                 </a>
             </div>
         </div>
-        <div class="breathless flexrow">
+        
+    </div>
+    <div class="breathless flexrow bg-blue">
             
             <h2 style="display:inline;">STRESS</h2>
                 {{#each stress.states as |state count|}}
@@ -86,5 +88,4 @@
                 {{/each}}
             
         </div>
-    </div>
 </form>

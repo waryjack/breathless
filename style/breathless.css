@@ -8,6 +8,26 @@
     background:#f1e9db;
 }
 
+.bg-blue {
+    background-color:rgb(79, 79, 207);
+}
+
+.bg-red {
+    background-color:rgb(199, 84, 84);
+}
+
+.bg-green {
+    background-color:rgb(56, 136, 56);
+}
+
+.bg-gray {
+    background-color:gray
+}
+
+.bg-yellow {
+    background-color:yellow'
+}
+
 /* .breathless .flex-col {
     display:flex;
     flex-flow:column nowrap;
