@@ -54,7 +54,7 @@ export class BreathlessActorSheet extends ActorSheet {
         html.find('.item-delete').click(this._onDeleteItem.bind(this));
 
         // Inline editing
-        html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
+        // html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
         html.find('.toggle-stress').click(this._onToggleStress.bind(this));
 
         // Rolling dice and using items
