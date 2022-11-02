@@ -85,7 +85,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
         let el = e.currentTarget;
         let iType = el.dataset.type;
-        let loc = "breathless.gen.new."+itype;
+        let loc = "breathless.gen.new."+iType;
 
         let iData = {
             name: game.i18n.localize(loc),

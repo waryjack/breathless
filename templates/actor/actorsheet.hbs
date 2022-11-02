@@ -7,26 +7,52 @@
         </div>
    {{log "Actor in charsheet" actor}}
     </header>
-    <div class="breathless charsheet-section flexcol csf">
-        <div class="flexrow">
-                <h2 class="csh">NAME</h2>
-                <span style="border-bottom:2px solid black;" data-field="name" class="charsheet-line inline-edit flex3" contenteditable>{{name}}</span>
+    <div class="breathless charsheet-section flexrow csf">
+        <div class="flexcol flex3">
+            <div class="flexrow">
+                    <h2 class="csh">NAME</h2>
+                    <span style="border-bottom:2px solid black;" data-field="name" class="charsheet-line inline-edit flex3" contenteditable>{{name}}</span>
+            </div>
+            <div class="flexrow"> 
+                    <h2 class="csh">PRONOUNS</h2>
+                    <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="charsheet-line inline-edit flex3" contenteditable>{{pronouns}}</span>
+                    <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
+            </div>
+            <div class="flexrow">
+                    <h2 class="csh">JOB</h2>
+                <span style="border-bottom:2px solid black;" data-field="system.job.name" class="charsheet-line inline-edit flex3" contenteditable>{{job.name}}</span>
+                <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
+            </div>
         </div>
-        <div class="flexrow"> 
-                <h2 class="csh">PRONOUNS</h2>
-                <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="charsheet-line inline-edit flex3" contenteditable>{{pronouns}}</span>
-                <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
-        </div>
-        <div class="flexrow">
-                <h2 class="csh">JOB</h2>
-               <span style="border-bottom:2px solid black;" data-field="system.job.name" class="charsheet-line inline-edit flex3" contenteditable>{{job.name}}</span>
-               <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
+        <div style="display:flex; flex-direction:column; flex-grow:1; align-items:center; justify-content:space-evenly !important">
+            <div>
+                <a class="catch-breath">
+                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:1.25em; text-align:center" class="csh">CATCH YOUR BREATH</span>
+                </a>
+            </div>
+            {{#if (getSetting "enable_lootcheck")}}
+            <div>
+                <a class="loot-check">
+                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:1.25em; text-align:center" class="csh">CHECK FOR LOOT</span>
+                </a>
+            </div>
+            {{/if}}
         </div>
     </div>
     <div class="breathless charsheet-section flexrow">
         
         <div class="breathless flexcol csf" style="margin-right:24px">
-        <h1 class="csh">{{getSetting "skill_name"}} <span style="font-size:0.5em">(INITIAL/CURRENT)</span></h1>    
+        <h1 class="csh"><span style="color:#beb19b;">
+            <a class="item-create" title="Add Skill" data-type="skill">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+            </span> {{getSetting "skill_name"}} <span style="font-size:0.5em">(INITIAL/CURRENT)</span> 
+        <!--span style="float:right;color:#beb19b;">
+            <a class="item-create" title="Add Skill" data-type="skill">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+            </span-->
+        </h1>    
                 {{#each skills as |skill id|}}
                     <div class="item-name item grid" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
                         <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
@@ -41,7 +67,13 @@
         </div>
         
         <div class="breathless csf">
-                <h1 class="csh">{{getSetting "storage_name"}} <span style="font-size:0.5em">(Initial/Current, Max Items: {{getSetting "storage_max"}})</span></h1>
+                <h1 class="csh"> <span style="color:#beb19b;">
+                <a class="item-create" title="Add Item" data-type="gear">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+                </span> {{getSetting "storage_name"}} <span style="font-size:0.5em">(Initial/Current, Max Items: {{getSetting "storage_max"}})</span>
+               
+                </h1>
                 {{#each gear as |gear id|}}
                     <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
                         <h3 style="text-transform:uppercase; display:inline;">{{gear.name}}</h3>
@@ -94,18 +126,6 @@
                     {{/ife}}
                 {{/each}}
                 {{#if stress.vulnerable}}<span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">VULNERABLE!</span>{{/if}}
-            <div>
-                <a class="catch-breath">
-                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CATCH YOUR BREATH</span>
-                </a>
-            </div>
-            {{#if (getSetting "enable_lootcheck")}}
-            <div>
-                <a class="loot-check">
-                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:2em; text-align:center" class="csh">CHECK FOR LOOT</span>
-                </a>
-            </div>
-            {{/if}}
         </div>
 
 </form>

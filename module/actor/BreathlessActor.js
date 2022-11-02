@@ -54,6 +54,7 @@ export class BreathlessActor extends Actor {
         let dialogData = {
             roll_name: item.name,
             roll_type: item.type,
+            roll_object: [r],
             roll_die: die,
             roll_result: result,
             roll_outcome: outcome,
@@ -97,6 +98,7 @@ export class BreathlessActor extends Actor {
 
         let dialogData = {
             roll_name: this.system.special.game_name,
+            roll_object: [r],
             roll_type: "",
             roll_die: die,
             roll_result: result,
@@ -223,7 +225,8 @@ export class BreathlessActor extends Actor {
         renderTemplate(template, data).then((dlg) => {
             ChatMessage.create({
                 user:game.user_id,
-                
+                type:CONST.CHAT_MESSAGE_TYPES.ROLL,
+                rolls: data.roll_object,
                 speaker: ChatMessage.getSpeaker(),
                 content: dlg
             });

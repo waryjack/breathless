@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Londrina+Solid&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Turret+Road&display=swap');
 
 .csf {
    
    font-family: 'Permanent Marker', cursive;
+   /* font-family: 'Turret Road', cursive; */
 
 }
 
 .csh {
+    /* font-family: 'Orbitron', sans-serif; */
     font-family: 'Londrina Solid', cursive;
     text-transform:uppercase;
 }

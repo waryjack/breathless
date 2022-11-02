@@ -31,7 +31,7 @@
     "breathless.gen.loot.check":"Loot Check",
     "breathless.gen.vulnerable":"Vulnerable",
     "breathless.gen.new.skill":"New Skill",
-    "breathless.gen.new.item":"New Item/Gear",
+    "breathless.gen.new.gear":"New Gear",
     "breathless.dialogs.delete.title":"Delete Item",
     "breathless.dialogs.delete.confirm":"Are you sure you want to delete this item?",
     "breathless.dialogs.labels.cancel":"Cancel",
