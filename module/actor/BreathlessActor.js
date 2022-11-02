@@ -230,4 +230,14 @@ export class BreathlessActor extends Actor {
         });
 
     }
+
+    /* checkStorageCap() {
+        let gear = this.items.filter(i => i.type === "gear");
+        let maxCap = game.settings.get("breathless", "storage_max");
+        if(gear.length < maxCap) {
+            return false;
+        } else {
+            return true;
+        }
+    }*/
 }

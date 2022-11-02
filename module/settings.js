@@ -54,6 +54,15 @@ export const registerSettings = function() {
         default: "Backpack"
     });
 
+    game.settings.register("breathless", "storage_max", {
+        name: "Max Storage Capacity",
+        hint: "How many kit or storage items can a character hold?",
+        scope: "world",
+        config: true,
+        type: Number,
+        default: 3
+    });
+
     game.settings.register("breathless", "healing_name", {
         name:"Healing Custom Name",
         hint:"Set the displayed name for Healing in your game (e.g. medkit, spell, bandage, etc.)",

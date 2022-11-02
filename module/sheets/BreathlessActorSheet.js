@@ -92,6 +92,14 @@ export class BreathlessActorSheet extends ActorSheet {
             type: iType
         }
 
+        /* if (iType === "gear") {
+            let atMax = this.actor.checkStorageCap();
+            if (atMax) {
+                ui.notifications.warning(`You can have a max of ${game.settings.get("breathless", "storage_max")} in your ${game.settings.get("breathless", "storage_name")}`);
+                return;
+            }
+        }*/
+
         return Item.create(iData, {parent:this.actor, renderSheet:true});
 
     }

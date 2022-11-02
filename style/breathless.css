@@ -8,6 +8,7 @@
 
 .csh {
     font-family: 'Londrina Solid', cursive;
+    text-transform:uppercase;
 }
 
 * {
@@ -16,6 +17,11 @@
             box-sizing: border-box;
 }
 
+.grid {
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-rows:auto;
+}
 
 .breathless .window-content {
     background:#f1e9db;

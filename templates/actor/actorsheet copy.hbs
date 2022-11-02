@@ -28,7 +28,7 @@
         <div class="breathless flexcol csf" style="margin-right:24px">
         <h1 class="csh">{{getSetting "skill_name"}} <span style="font-size:0.5em">(INITIAL/CURRENT)</span></h1>    
                 {{#each skills as |skill id|}}
-                    <div class="item-name item grid" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
+                    <div class="item-name item flexrow" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
                         <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
                         <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial" contenteditable>{{skill.system.initial}}
                             <!--span style="font-size:0.5em; text-align:right;">INIT</span-->
@@ -40,7 +40,7 @@
                 {{/each}}
         </div>
         
-        <div class="breathless csf">
+        <div class="breathless flexcol csf">
                 <h1 class="csh">{{getSetting "storage_name"}} <span style="font-size:0.5em">(Initial/Current, Max Items: {{getSetting "storage_max"}})</span></h1>
                 {{#each gear as |gear id|}}
                     <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
