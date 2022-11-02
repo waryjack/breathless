@@ -2,7 +2,7 @@
     "id": "breathless",
     "title": "Breathless System (Unofficial)",
     "description": "Foundry VTT system for Rene Pier Fari's Breathless System Games",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "authors":[
       {
         "name":"Chris Clouser",
