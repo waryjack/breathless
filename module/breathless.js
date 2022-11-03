@@ -119,6 +119,26 @@ Hooks.once("init", () => {
  * Item and Message Hooks
  */
 
+Hooks.on("preCreateItem", (item, data) => {
+    // console.log("Item in preCreate: ", item);
+    // console.log("Data in preCreate: ", data);
+
+    if(item.parent != null) {
+        let iType = item.type;
+        let storMax = game.settings.get("breathless", "storage_max");
+        let storName = game.settings.get("breathless", "storage_name");
+        let pc = game.actors.get(item.parent._id);
+        let gearList = pc.items.filter(i => i.type === "gear");
+        let gearCount = gearList.length;
+
+        if(iType === "gear" && gearCount >= storMax) {
+            ui.notifications.warn(`You can't add anything else to your ${storName}`);
+            return false;
+        }
+    }
+
+});
+
  Hooks.on('renderChatMessage', (app, html) => {
 
     html.on('click', '.taskroll-msg', event => {
