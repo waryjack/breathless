@@ -6,7 +6,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            classes: ['breathless', 'sheet', 'actor', 'actor-sheet'],
+            classes: ['breathless', 'csbg', 'sheet', 'actor', 'actor-sheet'],
             width: 775,
             height: 685,
             left:120,
