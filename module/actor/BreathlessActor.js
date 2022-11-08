@@ -29,10 +29,17 @@ export class BreathlessActor extends Actor {
         // set some basic variables
       
         let outcome = "";
-        
+        let validDice = ["d4", "d6", "d8", "d10", "d12", "d20"];
         // find the item's current die value, and roll it
         let item = this.items.get(id);
         let die = item.system.current;
+
+        // error catch on a non-evaluatable die value:
+
+        if (!validDice.includes(String.toLowerCase(die))) { 
+            return ui.notifications.warn("This is not a valid die value - check your character sheet!");
+        }
+
         let r = new Roll("1"+die).evaluate({async:false});
         let result = r.total;
 
