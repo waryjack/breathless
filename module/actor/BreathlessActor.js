@@ -36,16 +36,16 @@ export class BreathlessActor extends Actor {
 
         // error catch on a non-evaluatable die value:
 
-        if (!validDice.includes(String.toLowerCase(die))) { 
+        /* if (!validDice.includes(String.toLowerCase(die))) { 
             return ui.notifications.warn("This is not a valid die value - check your character sheet!");
-        }
+        } */
 
         let r = new Roll("1"+die).evaluate({async:false});
         let result = r.total;
 
         // step the die value down until reset
-        let newDiceVal = this.stepDown(id);
-        item.update({["system.current"]:newDiceVal});
+        this.stepDown(id, "current");
+        
 
         // determine the level of success
         if (result >= 5) {
@@ -150,15 +150,43 @@ export class BreathlessActor extends Actor {
         this.sheet.render(true);
     }
 
-    stepDown(id) {
+    stepUp(id, field) {
         let item = this.items.get(id);
         let iType = item.type;
+        let die = item.system[field];
+        let stepup = "";
+
+        switch (die) {
+            case "d10": {
+                stepup = "d10";break;
+            }
+            case "d8": {
+                stepup = "d10"; break;
+            }
+            case "d6": {
+                stepup = "d8"; break;
+            }
+            case "d4": {
+                stepup = "d6"; break;
+            }
+            default: { stepup = "d4"; break;}
+        }
+        let updateField = `system.${field}`;
+        console.warn("in Stepup method, iType, field, die, stepup: ", item, iType, die, stepup);
+        return item.update({[updateField]:stepup});
+
+    }
+
+    stepDown(id, field) {
+        let item = this.items.get(id);
+        let iType = item.type;
+        let die = item.system[field]
         let stepdown = "";
 
         console.log("Item: ", item, "type: ", iType);
         if(iType === "gear") {
-            let current = item.system.current;
-            switch (current) {
+            
+            switch (die) {
                 case "d10": {
                     stepdown = "d8";break;
                 }
@@ -169,8 +197,8 @@ export class BreathlessActor extends Actor {
                 default: { stepdown = "d6"; break;}
             }
         } else {
-            let current = item.system.current;
-            switch(current) {
+            
+            switch(die) {
                 case "d10": {
                     stepdown = "d8"; break;
                 }
@@ -184,7 +212,9 @@ export class BreathlessActor extends Actor {
                 default:{stepdown = "d4"; break;}
             }
         }
-        return stepdown;
+        let updateField = `system.${field}`;
+        return item.update({[updateField]:stepdown});
+        
     }
 
     catchBreath() {

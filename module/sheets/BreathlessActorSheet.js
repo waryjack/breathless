@@ -61,6 +61,10 @@ export class BreathlessActorSheet extends ActorSheet {
         html.find('.inline-edit').blur(this._onInlineEdit.bind(this));
         html.find('.inline-edit-item').blur(this._onInlineEditItem.bind(this));
         html.find('.toggle-stress').click(this._onToggleStress.bind(this));
+        
+        // on-sheet manipulations
+        html.find('.stepup').click(this._onStepUp.bind(this));
+        html.find('.stepdown').click(this._onStepDown.bind(this));
 
         // Rolling dice and using items
         html.find('.roll-dice').click(this._onRollDice.bind(this));
@@ -100,7 +104,7 @@ export class BreathlessActorSheet extends ActorSheet {
             }
         }*/
 
-        return Item.create(iData, {parent:this.actor, renderSheet:true});
+        return Item.create(iData, {parent:this.actor, renderSheet:false});
 
     }
 
@@ -216,6 +220,28 @@ export class BreathlessActorSheet extends ActorSheet {
     _onCatchBreath(e) {
         e.preventDefault();
         return this.actor.catchBreath();
+    }
+
+    _onStepUp(e) {
+        e.preventDefault();
+        let el = e.currentTarget;
+        let id = el.closest(".item").dataset.itemId;
+        let field = el.closest(".item").dataset.field;
+
+
+        console.warn("Item id, field for stepup: ", id, field);
+        return this.actor.stepUp(id, field);
+    }
+
+    _onStepDown(e) {
+        e.preventDefault();
+        let el = e.currentTarget;
+        let id = el.closest(".item").dataset.itemId;
+        let field = el.closest(".item").dataset.field;
+
+
+        console.warn("Item id, field for stepup: ", id, field);
+        return this.actor.stepDown(id, field);
     }
 
     async _onCheckLoot(e) {

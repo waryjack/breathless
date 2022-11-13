@@ -54,13 +54,21 @@
             </span-->
         </h1>    
                 {{#each skills as |skill id|}}
-                    <div class="item-name item grid" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
-                        <h3 style="text-transform:uppercase; display:inline; top:40%">{{skill.name}}</h3>
-                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial" contenteditable>{{skill.system.initial}}
+                    <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
+                        <h3 style="text-transform:uppercase; display:inline; top:40%" class="inline-edit-item" data-field="name" contenteditable>{{skill.name}}</h3>
+                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial">{{skill.system.initial}}
                             <!--span style="font-size:0.5em; text-align:right;">INIT</span-->
                         </span>
-                        <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{skill.system.current}}</a></span>
-                        <span style="color:#beb19b;"><a title="Edit {{skill.name}}" class="item-edit item" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                        <span class="flexcol flex0" style="margin-right:3px">
+                            <a class="stepup item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                            <a class="stepdown item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        </span>
+                        <span class="charsheet-box inline-edit-item" data-field="system.current"><a class="roll-dice">{{skill.system.current}}</a></span>
+                        <span class="flexcol flex0">
+                            <a class="stepup item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                            <a class="stepdown item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        </span>
+                        <span style="color:#beb19b; margin-left:12px"><a title="Edit {{skill.name}}" class="item-edit item" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
                         <a class="item-delete item" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a></span>
                     </div>
                 {{/each}}
@@ -76,10 +84,18 @@
                 </h1>
                 {{#each gear as |gear id|}}
                     <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
-                        <h3 style="text-transform:uppercase; display:inline;">{{gear.name}}</h3>
-                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356;" data-field="system.initial" contenteditable>{{gear.system.initial}}</span>
-                        <span class="charsheet-box inline-edit-item" data-field="system.current" contenteditable><a class="roll-dice">{{gear.system.current}}</a></span>
-                        <span style="color:#beb19b;">
+                        <h3 style="text-transform:uppercase; display:inline;" class="inline-edit-item" data-field="name" contenteditable>{{gear.name}}</h3>
+                        <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356;" data-field="system.initial">{{gear.system.initial}}</span>
+                        <span class="flexcol flex0" style="margin-right:3px">
+                            <a class="stepup item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                            <a class="stepdown item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        </span>
+                        <span class="charsheet-box inline-edit-item" data-field="system.current"><a class="roll-dice">{{gear.system.current}}</a></span>
+                         <span class="flexcol flex0">
+                            <a class="stepup item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                            <a class="stepdown item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        </span>
+                        <span style="color:#beb19b; margin-left:12px">
                             <a title="Edit {{gear.name}}" class="item-edit item" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
                             <a title="Delete {{gear.name}}" class="item-delete item" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a></span>
                     </div>
