@@ -47,6 +47,10 @@ Hooks.once("init", () => {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
     });
 
+    Handlebars.registerHelper('ifnot', function(arg1, arg2, options) {
+        return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+    });
+
     Handlebars.registerHelper("times", function(n, content) {
        let result = "";
        if (n==0 || n == null) return;

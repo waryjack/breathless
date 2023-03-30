@@ -184,33 +184,18 @@ export class BreathlessActor extends Actor {
         let stepdown = "";
 
         console.log("Item: ", item, "type: ", iType);
-        if(iType === "gear") {
-            
-            switch (die) {
-                case "d10": {
-                    stepdown = "d8";break;
-                }
-                case "d8": {
-                    stepdown = "d6"; break;
-                }
-                case "d6":
-                default: { stepdown = "d6"; break;}
+        switch(die) {
+            case "d10": {
+                stepdown = "d8"; break;
             }
-        } else {
-            
-            switch(die) {
-                case "d10": {
-                    stepdown = "d8"; break;
-                }
-                case "d8": {
-                    stepdown = "d6"; break;
-                }
-                case "d6": {
-                    stepdown = "d4"; break;
-                }
-                case "d4":
-                default:{stepdown = "d4"; break;}
+            case "d8": {
+                stepdown = "d6"; break;
             }
+            case "d6": {
+                stepdown = "d4"; break;
+            }
+            case "d4":
+            default:{stepdown = "d4"; break;}
         }
         let updateField = `system.${field}`;
         return item.update({[updateField]:stepdown});

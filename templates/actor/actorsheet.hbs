@@ -54,7 +54,12 @@
                 </span-->
             </h1>    
             {{#each skills as |skill id|}}
-                <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
+                {{#ife gear.system.current "d4"}}
+                    <div class="flexrow item-name item geard4" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
+                {{/ife}}
+                {{#ifnot gear.system.current "d4"}}
+                    <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
+                {{/ifnot}}
                     <h3 style="text-transform:uppercase; display:inline; top:40%" class="inline-edit-item" data-field="name" contenteditable>{{skill.name}}</h3>
                     <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial">
                         {{skill.system.initial}}
