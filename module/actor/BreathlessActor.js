@@ -224,8 +224,10 @@ export class BreathlessActor extends Actor {
 
         // reset all skills to initial levels
         skills.forEach(s => {
-            let init = s.system.initial;
-            s.update({"system.current":init});
+            if (s.type != "gear") {
+                let init = s.system.initial;
+                s.update({"system.current":init});
+            }
         });
 
 
