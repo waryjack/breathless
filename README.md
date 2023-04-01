@@ -26,3 +26,5 @@ You can install the latest released version of the system by using this manifest
 
 [Instructions](https://foundryvtt.com/article/tutorial/)
 Link: https://github.com/philote/FoundryVTT-CthulhuDeepGreen/releases/latest/download/system.json
+
+This software includes ideas and text from the ["Breathless SRD"](https://fari.community/creators/fari-rpgs/projects/breathless) by [Fari RPGs](https://fari.community/creators/fari-rpgs) which is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
