@@ -12,7 +12,7 @@ export class BreathlessActor extends Actor {
     prepareCharacterData(charData){
         super.prepareDerivedData();
         let strStates = this.system.stress.states;
-        console.log("Stress states: ", strStates);
+        // console.log("Stress states: ", strStates);
 
         if(strStates[0] == true && strStates[1] == true && strStates[2] == true && strStates[3] == true) {
             this.system.stress.vulnerable = true;
@@ -126,7 +126,7 @@ export class BreathlessActor extends Actor {
 
         // toggle down at least 2 stress boxes
         let states = this.system.stress.states;
-        console.log('heal before: ', states);
+        // console.log('heal before: ', states);
         if(states[3] == true && states[2] == true) {
             states[3] = false;
             states[2] = false;
@@ -140,7 +140,7 @@ export class BreathlessActor extends Actor {
             states[0] = false;
         }
 
-        console.log('heal after: ', states);
+        // console.log('heal after: ', states);
         this.update({"system.stress.states":states});
         this.sheet.render(true);
     }
@@ -246,7 +246,7 @@ export class BreathlessActor extends Actor {
         });
 
         // clear 1 stress
-        console.log("stress states in catchBreath: ", states);
+        // console.log("stress states in catchBreath: ", states);
         if(states[3] == true) {
             states[3] = false;
         } else if (states[2] == true) {
@@ -256,7 +256,7 @@ export class BreathlessActor extends Actor {
         } else if (states[0] == true) {
             states[0] = false;
         }
-        console.log("stress states in catchBreath 2: ", states);
+        // console.log("stress states in catchBreath 2: ", states);
         this.update({"system.stress.states":states});
         this.sheet.render(true);
 
