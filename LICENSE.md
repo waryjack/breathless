@@ -1,6 +1,7 @@
 MIT License
 
-Copyright (c) 2022 Chris Clouser, 2023 Joseph Hopson
+Copyright (c) 2022 Chris Clouser
+Copyright (c) 2023 Joseph Hopson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
