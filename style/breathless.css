@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Londrina+Solid&family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Turret+Road&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Turret+Road&display=swap'); */
 
 .csf {
-   
    font-family: 'Permanent Marker', cursive;
    /* font-family: 'Turret Road', cursive; */
-
 }
 
 .csh {
@@ -27,16 +25,11 @@
 }
 
 .breathless .window-content {
-  
-   
     background-color:#f1e9db;
     background-image: url("grunge1kt.png") !important;
     background-position:right bottom;
     background-repeat:no-repeat;
-    
-
 }
-
 
 h1,h2,h3,h4,h5 {
     border:none;
@@ -96,10 +89,6 @@ h1,h2,h3,h4,h5 {
     justify-content:flex-start;
 }
 
-.geard4 .roll-dice {
-    color: brown;
-    text-decoration: line-through
-}
 /* .breathless .flex-col {
     display:flex;
     flex-flow:column nowrap;

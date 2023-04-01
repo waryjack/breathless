@@ -3,12 +3,10 @@ export class BreathlessActor extends Actor {
     /**
      * @override
      */
-
     prepareBaseData() {
         super.prepareBaseData();
         const charData = this.system;
-
-       this.prepareCharacterData(charData);
+        this.prepareCharacterData(charData);
     }
 
     prepareCharacterData(charData){
@@ -21,18 +19,20 @@ export class BreathlessActor extends Actor {
         } else {
             this.system.stress.vulnerable = false;
         }
-
-
     }
 
     rollDice(id) {
         // set some basic variables
-      
         let outcome = "";
-        let validDice = ["d4", "d6", "d8", "d10", "d12", "d20"];
+        // let validDice = ["d4", "d6", "d8", "d10", "d12", "d20"];
         // find the item's current die value, and roll it
         let item = this.items.get(id);
         let die = item.system.current;
+        
+        // Item is spent, don't roll
+        if (die == "--") {
+            return;
+        }
 
         // error catch on a non-evaluatable die value:
 
@@ -46,7 +46,6 @@ export class BreathlessActor extends Actor {
         // step the die value down until reset
         this.stepDown(id, "current");
         
-
         // determine the level of success
         if (result >= 5) {
             outcome = game.i18n.localize("breathless.gen.success.full");
@@ -68,9 +67,7 @@ export class BreathlessActor extends Actor {
             roll_die_image: image
         }
        
-        this.outputChatMessage(dialogData);
-
-        
+        this.outputChatMessage(dialogData);        
     }
 
     useSpecial() {
@@ -115,11 +112,9 @@ export class BreathlessActor extends Actor {
        
         this.outputChatMessage(dialogData);
         this.update({"system.special.used":true});
-
     }
 
     useHealing() {
-
         // allow quick clearing of the toggle without triggering a heal
         if(this.system.healing.used == true) {
             this.update({"system.healing.used":false});
@@ -156,21 +151,43 @@ export class BreathlessActor extends Actor {
         let die = item.system[field];
         let stepup = "";
 
-        switch (die) {
-            case "d10": {
-                stepup = "d10";break;
+        // TODO should this go to D12?
+        if(iType === "gear") {
+            switch (die) {
+                case "d10": {
+                    stepup = "d10";break;
+                }
+                case "d8": {
+                    stepup = "d10"; break;
+                }
+                case "d6": {
+                    stepup = "d8"; break;
+                }
+                case "--": 
+                default: {
+                    stepup = "d6"; break;
+                }
             }
-            case "d8": {
-                stepup = "d10"; break;
+        } else {
+            switch (die) {
+                case "d10": {
+                    stepup = "d10";break;
+                }
+                case "d8": {
+                    stepup = "d10"; break;
+                }
+                case "d6": {
+                    stepup = "d8"; break;
+                }
+                case "d4": {
+                    stepup = "d6"; break;
+                }
+                default: {
+                    stepup = "d4"; break;
+                }
             }
-            case "d6": {
-                stepup = "d8"; break;
-            }
-            case "d4": {
-                stepup = "d6"; break;
-            }
-            default: { stepup = "d4"; break;}
         }
+
         let updateField = `system.${field}`;
         console.warn("in Stepup method, iType, field, die, stepup: ", item, iType, die, stepup);
         return item.update({[updateField]:stepup});
@@ -183,23 +200,36 @@ export class BreathlessActor extends Actor {
         let die = item.system[field]
         let stepdown = "";
 
-        console.log("Item: ", item, "type: ", iType);
-        switch(die) {
-            case "d10": {
-                stepdown = "d8"; break;
+        // console.log("Item: ", item, "type: ", iType);
+        if(iType === "gear") {
+            switch (die) {
+                case "d10": {
+                    stepdown = "d8";break;
+                }
+                case "d8": {
+                    stepdown = "d6"; break;
+                }
+                case "d6":
+                default:{stepdown = "--"; break;}
             }
-            case "d8": {
-                stepdown = "d6"; break;
+        } else {
+            switch(die) {
+                case "d10": {
+                    stepdown = "d8"; break;
+                }
+                case "d8": {
+                    stepdown = "d6"; break;
+                }
+                case "d6": {
+                    stepdown = "d4"; break;
+                }
+                case "d4":
+                default:{stepdown = "d4"; break;}
             }
-            case "d6": {
-                stepdown = "d4"; break;
-            }
-            case "d4":
-            default:{stepdown = "d4"; break;}
         }
+
         let updateField = `system.${field}`;
         return item.update({[updateField]:stepdown});
-        
     }
 
     catchBreath() {
@@ -214,7 +244,6 @@ export class BreathlessActor extends Actor {
                 s.update({"system.current":init});
             }
         });
-
 
         // clear 1 stress
         console.log("stress states in catchBreath: ", states);
@@ -239,9 +268,6 @@ export class BreathlessActor extends Actor {
             whisper: ChatMessage.getWhisperRecipients("GM"),
             content: `<b>NOTE</b>: ${pcname} used Catch Your Breath.`
         });
-        
-
-
     }
 
     outputChatMessage(data) {
@@ -255,7 +281,6 @@ export class BreathlessActor extends Actor {
                 content: dlg
             });
         });
-
     }
 
     /* checkStorageCap() {
