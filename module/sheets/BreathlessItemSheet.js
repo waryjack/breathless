@@ -11,7 +11,7 @@ export class BreathlessItemSheet extends ItemSheet {
             left:120,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheetbody", initial: "main"}],
             dragDrop: [{dragSelector: ".dragline", dropSelector: null}]
-            });
+        });
     }
 
     getData () {

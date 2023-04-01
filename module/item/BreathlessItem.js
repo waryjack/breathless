@@ -1,3 +1,1 @@
-export class BreathlessItem extends Item {
-    
-}
+export class BreathlessItem extends Item {}

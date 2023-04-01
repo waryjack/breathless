@@ -72,7 +72,6 @@ export const registerSettings = function() {
         default:"Medkit"
     });
 
-
     game.settings.register("breathless", "stress_name", {
         name: "Stress Custom Name",
         hint: "Custom name for Stress in your game",

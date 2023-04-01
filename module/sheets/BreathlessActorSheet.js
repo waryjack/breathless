@@ -12,20 +12,18 @@ export class BreathlessActorSheet extends ActorSheet {
             left:120,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheetbody", initial: "main"}],
             dragDrop: [{dragSelector: ".dragline", dropSelector: null}]
-            });
+        });
     }
 
     /** 
      * @override
      */
-
     getData() {
         const charData = deepClone(this.actor.system);
-        
         charData.config = CONFIG.BREATHLESS;
 
         let charItems = this.actor.items;
-        console.log("Actor: ", this.actor);
+        // console.log("Actor: ", this.actor);
         charData.actor = this.actor;
         charData.skills = charItems.filter(i => i.type === "skill");
         charData.gear = charItems.filter(i => i.type === "gear");
@@ -37,7 +35,7 @@ export class BreathlessActorSheet extends ActorSheet {
         charData.job = this.actor.system.job;
         charData.healing = this.actor.system.healing;
 
-        console.log("Chardata name, pronouns, job: ", charData.name, charData.pronouns, charData.job.name);
+        // console.log("Chardata name, pronouns, job: ", charData.name, charData.pronouns, charData.job.name);
         // charData.useHealing = (get system setting here)
 
         return charData;
@@ -46,7 +44,6 @@ export class BreathlessActorSheet extends ActorSheet {
     /**
      * @override
      */
-
     activateListeners(html) {
         super.activateListeners(html);
 
@@ -81,7 +78,6 @@ export class BreathlessActorSheet extends ActorSheet {
                 item.addEventListener('dragstart', handler, false);
             }
         });
-
     }
 
     _onCreateItem(e) {
@@ -96,16 +92,7 @@ export class BreathlessActorSheet extends ActorSheet {
             type: iType
         }
 
-        /* if (iType === "gear") {
-            let atMax = this.actor.checkStorageCap();
-            if (atMax) {
-                ui.notifications.warning(`You can have a max of ${game.settings.get("breathless", "storage_max")} in your ${game.settings.get("breathless", "storage_name")}`);
-                return;
-            }
-        }*/
-
         return Item.create(iData, {parent:this.actor, renderSheet:false});
-
     }
 
     _onEditItem(e) {
@@ -116,7 +103,6 @@ export class BreathlessActorSheet extends ActorSheet {
         let item = this.actor.items.get(id);
 
         item.sheet.render(true);
-
     }
 
     _onDeleteItem(e) {
@@ -125,53 +111,55 @@ export class BreathlessActorSheet extends ActorSheet {
         let el = e.currentTarget;
         let id = el.closest(".item").dataset.itemId;
 
-        let d = new Dialog({
-            title: game.i18n.localize("breathless.dialogs.delete.title"),
-            content: game.i18n.localize("breathless.dialogs.delete.confirm"),
-            buttons: {
-             one: {
-              icon: '<i class="fas fa-check"></i>',
-              label: game.i18n.localize("breathless.dialogs.labels.yes"),
-              callback: () => { 
-                  let itemToDelete = this.actor.items.get(id);
-                  itemToDelete.delete();
-                }
-             },
-             two: {
-              icon: '<i class="fas fa-times"></i>',
-              label: game.i18n.localize("breathless.dialogs.labels.cancel"),
-              callback: () => { return; }
-             }
-            },
-            default: "two",
-            render: html => console.log("Register interactivity in the rendered dialog"),
-            close: html => console.log("This always is logged no matter which option is chosen")
-           });
-           d.render(true);
-
+        let d = new Dialog(
+            {
+                title: game.i18n.localize("breathless.dialogs.delete.title"),
+                content: game.i18n.localize("breathless.dialogs.delete.confirm"),
+                buttons: {
+                    one: {
+                        icon: '<i class="fas fa-check"></i>',
+                        label: game.i18n.localize("breathless.dialogs.labels.yes"),
+                        callback: () => { 
+                            let itemToDelete = this.actor.items.get(id);
+                            itemToDelete.delete();
+                        }
+                    },
+                        two: {
+                        icon: '<i class="fas fa-times"></i>',
+                        label: game.i18n.localize("breathless.dialogs.labels.cancel"),
+                        callback: () => { return; }
+                    }
+                },
+                default: "two",
+                render: html => console.log("Register interactivity in the rendered dialog"),
+                close: html => console.log("This always is logged no matter which option is chosen")
+            }
+        );
+        d.render(true);
     }
 
     _onInlineEdit(e) {
         e.preventDefault();
-        console.log("fired inline edit method");
+        // console.log("fired inline edit method");
 
         let el = e.currentTarget;
         // let id = el.closest(".item").dataset.itemId;
         let field = el.dataset.field;
         // let item = this.actor.items.get(id);
-        console.log("Edited actor field, new value: ", field, el.innerText);
+        // console.log("Edited actor field, new value: ", field, el.innerText);
         return this.actor.update({[field]:el.innerText});
     }
 
     _onInlineEditItem(e) {
         e.preventDefault();
-        console.log("fired inline edit item method");
+        // console.log("fired inline edit item method");
 
         let el = e.currentTarget;
         let id = el.closest(".item").dataset.itemId;
         let field = el.dataset.field;
         let item = this.actor.items.get(id);
-        console.log("Edited item field, new value: ", field, el.innerText);
+
+        // console.log("Edited item field, new value: ", field, el.innerText);
         return item.update({[field]:el.innerText});
     }
 
@@ -192,7 +180,6 @@ export class BreathlessActorSheet extends ActorSheet {
         }
 
         currentArray[pos] = newState;
-       
         return this.actor.update({["system.stress.states"]:currentArray});
     }
 
@@ -200,21 +187,17 @@ export class BreathlessActorSheet extends ActorSheet {
         e.preventDefault();
         let el = e.currentTarget;
         let id = el.closest(".item").dataset.itemId;
-        
         return this.actor.rollDice(id);
     }
 
     _onUseSpecial(e) {
         e.preventDefault();
         return this.actor.useSpecial();
-
     }
 
     _onUseHealing(e) {
         e.preventDefault();
-
         return this.actor.useHealing();
-
     }
 
     _onCatchBreath(e) {
@@ -228,8 +211,7 @@ export class BreathlessActorSheet extends ActorSheet {
         let id = el.closest(".item").dataset.itemId;
         let field = el.closest(".item").dataset.field;
 
-
-        console.warn("Item id, field for stepup: ", id, field);
+        // console.warn("Item id, field for stepup: ", id, field);
         return this.actor.stepUp(id, field);
     }
 
@@ -239,8 +221,7 @@ export class BreathlessActorSheet extends ActorSheet {
         let id = el.closest(".item").dataset.itemId;
         let field = el.closest(".item").dataset.field;
 
-
-        console.warn("Item id, field for stepup: ", id, field);
+        // console.warn("Item id, field for stepup: ", id, field);
         return this.actor.stepDown(id, field);
     }
 
@@ -251,7 +232,7 @@ export class BreathlessActorSheet extends ActorSheet {
             return ui.notifications.error("There is no Loot table set up.")
         }
 
+        // TODO what needs to be done here?
         let newLoot = await loot.draw({displayChat:true});
-
     }
 }
