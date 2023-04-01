@@ -2,32 +2,32 @@
     "id": "breathless",
     "title": "Breathless System (Unofficial)",
     "description": "Foundry VTT system for René-Pier Fari's Breathless System Games",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "authors":[
       {
         "name":"Chris Clouser",
         "discord":"Cannyjack"
+      },
+      {
+        "name": "ephson",
+        "url": "https://github.com/philote",
+        "discord": "ephson#3451"
       }
     ],
     "compatibility": {
       "minimum": "10",
-      "verified": "10",
+      "verified": "10.291",
       "maximum": "10"
     }, 
-    "esmodules": [
-        "module/breathless.js"
-    ],
-    "scripts": [],
-    "styles": [
-        "style/breathless.css"
-    ],
+    "esmodules": ["module/breathless.js"],
+    "styles": ["style/breathless.css"],
     "languages": [
-        {
-          "lang": "en",
-          "name": "English",
-          "path": "lang/en.json"
-        }
-      ],
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "lang/en.json"
+      }
+    ],
     "socket":true,
     "initiative":null,
     "gridDistance": 5,

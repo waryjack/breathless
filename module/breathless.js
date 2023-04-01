@@ -11,12 +11,11 @@ import { BREATHLESS } from "./config.js";
 // Initialize system
 
 Hooks.once("init", () => {
-    console.log("##### Breathless | Initializing Breathless System #####");
+    // console.log("##### Breathless | Initializing Breathless System #####");
 
     CONFIG.breathless = BREATHLESS; 
 
     // Add namespace in global 
-
     game.breathless = {
         BreathlessActor,
         BreathlessActorSheet,
@@ -47,35 +46,32 @@ Hooks.once("init", () => {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
     });
 
+    Handlebars.registerHelper('ifnot', function(arg1, arg2, options) {
+        return (arg1 != arg2) ? options.fn(this) : options.inverse(this);
+    });
+
     Handlebars.registerHelper("times", function(n, content) {
        let result = "";
        if (n==0 || n == null) return;
        for (let i = 0; i < n; i++) {
            result += content.fn(i)
        }
-
        return result;
-
     });
 
     //uppercases; needs work
     Handlebars.registerHelper("proper", function(content) {
         let result = "";
-
         result = content[0].toUpperCase() + content.substring(1);
-
         return result;
-
     });
 
     Handlebars.registerHelper("minus", function(arg1, arg2) {
         let result = arg1 - arg2;
-
         return result;
     });
 
     Handlebars.registerHelper("render", function(arg1){
-
         return new Handlebars.SafeString(arg1);
     });
 
@@ -86,13 +82,11 @@ Hooks.once("init", () => {
         return game.settings.get('breathless', arg);
     });
 
-    
     Handlebars.registerHelper("concat", function(...args){
         let result = "";
         for (let a of args) {
             result += a;
         }
-
         return result;
     });
 
@@ -112,13 +106,11 @@ Hooks.once("init", () => {
     Handlebars.registerHelper("or", function(a, b){
         return (a || b);
     });
-
 });
 
 /**
  * Item and Message Hooks
  */
-
 Hooks.on("preCreateItem", (item, data) => {
     // console.log("Item in preCreate: ", item);
     // console.log("Data in preCreate: ", data);
@@ -136,7 +128,6 @@ Hooks.on("preCreateItem", (item, data) => {
             return false;
         }
     }
-
 });
 
  Hooks.on('renderChatMessage', (app, html) => {
