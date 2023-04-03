@@ -25,7 +25,7 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 You can install the latest released version of the system by using this manifest link in Foundry VTT.
 
 [Instructions](https://foundryvtt.com/article/tutorial/)
-Link: https://github.com/philote/FoundryVTT-CthulhuDeepGreen/releases/latest/download/system.json
+Link: https://github.com/waryjack/breathless/releases/latest/download/system.json
 
 ## Content License Note
 
