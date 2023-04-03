@@ -189,7 +189,7 @@ export class BreathlessActor extends Actor {
         }
 
         let updateField = `system.${field}`;
-        console.warn("in Stepup method, iType, field, die, stepup: ", item, iType, die, stepup);
+        // console.warn("in Stepup method, iType, field, die, stepup: ", item, iType, die, stepup);
         return item.update({[updateField]:stepup});
 
     }
