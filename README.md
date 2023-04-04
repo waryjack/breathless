@@ -8,7 +8,11 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 - The Breathless Game: https://fari-rpgs.itch.io/breathless
 - The Breathless Games Collection: https://itch.io/c/2381440/breathless-games
 
-![Screenshot](screenshot.webp)
+![A screenshot of the Breathless character sheet and chat output in Foundry VTT](screenshot.webp)
+
+### Settings
+
+![A screenshot of the Breathless settings page in Foundry VTT](screenshot.webp)
 
 ## Features
 
