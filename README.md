@@ -12,7 +12,7 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 
 ### Settings
 
-![A screenshot of the Breathless settings page in Foundry VTT](screenshot.webp)
+![A screenshot of the Breathless settings page in Foundry VTT](settings.webp)
 
 ## Features
 
