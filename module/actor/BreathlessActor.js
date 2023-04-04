@@ -24,7 +24,6 @@ export class BreathlessActor extends Actor {
     rollDice(id) {
         // set some basic variables
         let outcome = "";
-        // let validDice = ["d4", "d6", "d8", "d10", "d12", "d20"];
         // find the item's current die value, and roll it
         let item = this.items.get(id);
         let die = item.system.current;
@@ -33,12 +32,6 @@ export class BreathlessActor extends Actor {
         if (die == "--") {
             return;
         }
-
-        // error catch on a non-evaluatable die value:
-
-        /* if (!validDice.includes(String.toLowerCase(die))) { 
-            return ui.notifications.warn("This is not a valid die value - check your character sheet!");
-        } */
 
         let r = new Roll("1"+die).evaluate({async:false});
         let result = r.total;
@@ -260,16 +253,16 @@ export class BreathlessActor extends Actor {
         this.update({"system.stress.states":states});
         this.sheet.render(true);
 
-        let pcname = this.name;
+        let pcName = this.name;
         // notify GM that it happened
         ChatMessage.create({
             user:game.user_id,
             rollMode:'gmroll',
             whisper: ChatMessage.getWhisperRecipients("GM"),
-            content: `<b>NOTE</b>: ${pcname} used Catch Your Breath.`
+            content: game.i18n.format('breathless.chatMessage.healUsed', {pcName: pcName})
         });
     }
-
+    
     outputChatMessage(data) {
         let template = 'systems/breathless/templates/msg/chatmessage.hbs';
         renderTemplate(template, data).then((dlg) => {

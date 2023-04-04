@@ -124,7 +124,7 @@ Hooks.on("preCreateItem", (item, data) => {
         let gearCount = gearList.length;
 
         if(iType === "gear" && gearCount >= storMax) {
-            ui.notifications.warn(game.i18n.localize("breathless.interface.warning.maxstorage") + storName);
+            ui.notifications.warn(game.i18n.format('breathless.interface.warning.maxstorage', {storName: storName}));
             return false;
         }
     }

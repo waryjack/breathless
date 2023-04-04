@@ -85,6 +85,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
         let el = e.currentTarget;
         let iType = el.dataset.type;
+        // TODO use the Skill setting, but need a singlular form for this
         let loc = "breathless.gen.new."+iType;
 
         let iData = {
@@ -130,9 +131,9 @@ export class BreathlessActorSheet extends ActorSheet {
                         callback: () => { return; }
                     }
                 },
-                default: "two",
-                render: html => console.log("Register interactivity in the rendered dialog"),
-                close: html => console.log("This always is logged no matter which option is chosen")
+                default: "two"
+                // render: html => console.log("Register interactivity in the rendered dialog"),
+                // close: html => console.log("This always is logged no matter which option is chosen")
             }
         );
         d.render(true);
@@ -143,9 +144,7 @@ export class BreathlessActorSheet extends ActorSheet {
         // console.log("fired inline edit method");
 
         let el = e.currentTarget;
-        // let id = el.closest(".item").dataset.itemId;
         let field = el.dataset.field;
-        // let item = this.actor.items.get(id);
         // console.log("Edited actor field, new value: ", field, el.innerText);
         return this.actor.update({[field]:el.innerText});
     }
@@ -229,10 +228,9 @@ export class BreathlessActorSheet extends ActorSheet {
         e.preventDefault();
         const loot = game.tables.filter(table => table.name === "Loot")[0];
         if(loot === undefined) {
-            return ui.notifications.error("There is no Loot table set up.")
+            return ui.notifications.error(game.i18n.localize("breathless.error.lootCheck"))
         }
 
-        // TODO what needs to be done here?
         let newLoot = await loot.draw({displayChat:true});
     }
 }

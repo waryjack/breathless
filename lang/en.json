@@ -9,6 +9,16 @@
     "breathless.gen.fail":"Failure",
     "breathless.gen.vulnerable":"Vulnerable",
     "breathless.gen.sheet.maxitems":"Max Items",
+    "breathless.gen.new.skill":"New Skill",
+    "breathless.gen.new.gear":"New Item",
+    "breathless.gen.roll":"Roll",
+    "breathless.gen.result": "Result:",
+
+    "breathless.item.placeholder.name": "Name",
+    "breathless.item.d4": "d4",
+    "breathless.item.d6": "d6",
+    "breathless.item.d8": "d8",
+    "breathless.item.d10": "d10",
    
     "breathless.dialogs.delete.title":"Delete Item",
     "breathless.dialogs.delete.confirm":"Are you sure you want to delete this item?",
@@ -17,7 +27,10 @@
     "breathless.dialogs.labels.initial_die": "Initial Die",
     "breathless.dialogs.labels.current_die": "Current Die",
     
-    "breathless.interface.warning.maxstorage": "You can't add anything else to your ",
+    "breathless.chatMessage.healUsed": "<b>NOTE</b>: {pcName} used Catch Your Breath.",
+    "breathless.error.lootCheck": "There is no Loot table set up. Create a new Rollable Table called \"Loot\", then try again.",
+    
+    "breathless.interface.warning.maxstorage": "You can't add anything else to your {storeName}.",
 
     "breathless.gen.catch":"Catch your Breath",
     "breathless.gen.loot.check":"Check for Loot",
