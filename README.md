@@ -23,6 +23,7 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 ## To Be Done
 
 - Create a simple NPC Sheet
+- Create a sample Loot table
 
 ## How to Install
 
