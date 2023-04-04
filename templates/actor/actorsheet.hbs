@@ -17,12 +17,10 @@
             <div class="flexrow"> 
                 <h2 class="csh">{{localize "breathless.gen.pronouns"}}</h2>
                 <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="charsheet-line inline-edit flex3" contenteditable>{{pronouns}}</span>
-                <!--input class="breathless text" name="pronouns" type="text" value="{{pronouns}}" data-dType="String"/-->
             </div>
             <div class="flexrow">
                 <h2 class="csh">{{localize "breathless.gen.job"}}</h2>
                 <span style="border-bottom:2px solid black;" data-field="system.job.name" class="charsheet-line inline-edit flex3" contenteditable>{{job.name}}</span>
-                <!--input class="breathless text" name="job" type="text" value="{{job}}" data-dType="String"-->
             </div>
         </div>
         <div style="display:flex; flex-direction:column; flex-grow:1; align-items:center; justify-content:space-evenly !important">
@@ -128,7 +126,7 @@
     </div>
 
     <div class="breathless flexrow csf" style="align-items:center; gap:6px">
-        <h1 class="csh flex0">{{localize "breathless.gen.stress"}}</h1>
+        <h1 class="csh flex0">{{getSetting "stress_name"}}</h1>
         {{#each stress.states as |state count|}}
             {{#ife state 0}}
                 <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>

@@ -18,15 +18,9 @@
             box-sizing: border-box;
 }
 
-.grid {
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    grid-template-rows:auto;
-}
-
 .breathless .window-content {
     background-color:#f1e9db;
-    background-image: url("grunge1kt.png") !important;
+    background-image: url("../assets/grunge1kt.png") !important;
     background-position:right bottom;
     background-repeat:no-repeat;
 }
@@ -34,26 +28,6 @@
 h1,h2,h3,h4,h5 {
     border:none;
     text-decoration:none;
-}
-
-.bg-blue {
-    background-color:rgb(79, 79, 207);
-}
-
-.bg-red {
-    background-color:rgb(199, 84, 84);
-}
-
-.bg-green {
-    background-color:rgb(56, 136, 56);
-}
-
-.bg-gray {
-    background-color:gray;
-}
-
-.bg-yellow {
-    background-color:yellow;
 }
 
 .charsheet-section {
@@ -83,37 +57,3 @@ h1,h2,h3,h4,h5 {
 .caps {
     text-transform:uppercase;
 }
-
-.ja {
-    align-content:flex-start;
-    justify-content:flex-start;
-}
-
-/* .breathless .flex-col {
-    display:flex;
-    flex-flow:column nowrap;
-    justify-content:stretch;
-  
-}
-
-.breathless .flex-row {
-    display:flex;
-    flex-flow:row nowrap;
-    justify-content:space-between;
-  
-}
-
-.breathless .flex-item {
-    border:none;
-    background:none;
-    color:black;
-    font-size:1em;
-    margin-top:8px;
-    margin-left:6px;
-    margin-right:6px;
-    height:auto;
-    flex:1;
-    width:32%;
-    align-items:flex-start;
-} */
-  

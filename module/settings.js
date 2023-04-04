@@ -1,17 +1,18 @@
 export const registerSettings = function() {
     
-    game.settings.register("breathless", 'enable_storage', {
-        name: 'Enable Storage',
-        hint: 'Enables use of storage item like a backpack / war bag',
-        scope: 'world',
-        config: true,
-        type: Boolean,
-        default: true,
-    });
+    // TODO: use this
+    // game.settings.register("breathless", 'enable_storage', {
+    //     name: "breathless.settings.enable_storage.name",
+    //     hint: "breathless.settings.enable_storage.hint",
+    //     scope: 'world',
+    //     config: true,
+    //     type: Boolean,
+    //     default: true,
+    // });
 
     game.settings.register("breathless", "enable_healing", {
-        name: "Enable Healing",
-        hint: "Characters can use healing item (e.g. medkit, healing spell, etc.)",
+        name: "breathless.settings.enable_healing.name",
+        hint: "breathless.settings.enable_healing.hint",
         scope: "world",
         config: true,
         type: Boolean,
@@ -19,8 +20,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "enable_lootcheck", {
-        name: "Enable Loot Check",
-        hint: "Show loot check button on character sheet",
+        name: "breathless.settings.enable_lootcheck.name",
+        hint: "breathless.settings.enable_lootcheck.hint",
         scope: "world",
         config: true,
         type: Boolean,
@@ -28,8 +29,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "cs_title", {
-        name: "Character Sheet Title",
-        hint: "Custom title for the character sheet",
+        name: "breathless.settings.cs_title.name",
+        hint: "breathless.settings.cs_title.hint",
         scope: "world",
         config: true,
         type: String,
@@ -37,8 +38,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "skill_name", {
-        name:"Skills Custom Name",
-        hint:"Set the displayed name for skills in your game (e.g. abilities, talents, etc.)",
+        name:"breathless.settings.skill_name.name",
+        hint:"breathless.settings.skill_name.hint",
         scope: "world",
         config:true,
         type:String,
@@ -46,8 +47,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "storage_name", {
-        name: "Storage Custom Name",
-        hint: "Custom name for storage - e.g. backpack, bag, kit, etc.",
+        name: "breathless.settings.storage_name.name",
+        hint: "breathless.settings.storage_name.hint",
         scope: "world",
         config: true,
         type: String,
@@ -55,8 +56,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "storage_max", {
-        name: "Max Storage Capacity",
-        hint: "How many kit or storage items can a character hold?",
+        name: "breathless.settings.storage_max.name",
+        hint: "breathless.settings.storage_max.hint",
         scope: "world",
         config: true,
         type: Number,
@@ -64,8 +65,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "healing_name", {
-        name:"Healing Custom Name",
-        hint:"Set the displayed name for Healing in your game (e.g. medkit, spell, bandage, etc.)",
+        name:"breathless.settings.healing_name.name",
+        hint:"breathless.settings.healing_name.hint",
         scope: "world",
         config:true,
         type:String,
@@ -73,8 +74,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "stress_name", {
-        name: "Stress Custom Name",
-        hint: "Custom name for Stress in your game",
+        name: "breathless.settings.stress_name.name",
+        hint: "breathless.settings.stress_name.hint",
         scope: "World",
         config: true,
         type: String,
@@ -82,8 +83,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "special_name", {
-        name: "Special Ability Custom Name",
-        hint: "Name for special ability - e.g. Stunt, Truth, etc.",
+        name: "breathless.settings.special_name.name",
+        hint: "breathless.settings.special_name.hint",
         scope: "world",
         config: true,
         type: String,
@@ -91,8 +92,8 @@ export const registerSettings = function() {
     });
 
     game.settings.register("breathless", "special_unrolled", {
-        name: "Special Ability Unrolled",
-        hint: "Check this if the character's special ability does NOT trigger a dice roll",
+        name: "breathless.settings.special_unrolled.name",
+        hint: "breathless.settings.special_unrolled.hint",
         scope: "world",
         config: true,
         type: Boolean,
