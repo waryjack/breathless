@@ -28,12 +28,10 @@
 h1,h2,h3,h4,h5 {
     border:none;
     text-decoration:none;
-    margin: 0px;
-    align-self: center;
 }
 
 .charsheet-section {
-    margin-bottom:10px;
+    margin-bottom:16px;
 }
 
 .charsheet-line {
@@ -54,27 +52,24 @@ h1,h2,h3,h4,h5 {
 }
 
 .item {
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
 .item-controls {
     color:#877e70;
-    margin: 0px 0px 0px 15px;
+    margin: 0px 10px 0px 15px;
 }
 
 .item-block {
-    align-items: center;
-    border: 2px solid #877e7061;
-    border-radius: 10px;
-    gap: 6px;
-    padding: 5px 10px 5px 10px;
+    align-items:center;
+    border-bottom:2px solid #877e7061;
+    gap:6px
 }
 
 .item-name {
     text-transform:uppercase;
     display:inline; 
     top:40%;
-    margin: 0px;
 }
 
 .caps {

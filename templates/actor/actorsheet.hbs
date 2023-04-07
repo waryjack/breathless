@@ -39,29 +39,54 @@
     </div>
 
     <div class="breathless charsheet-section flexrow">
-        <div class="breathless flexcol csf" style="margin-right:24px">
+        <div class="breathless csf" style="margin-right:24px">
             <h1 class="csh">
-                <span style="color:#beb19b;"><a class="item-create" title="Add Skill" data-type="skill"><i class="fas fa-plus-square"></i></a></span> 
+                <span style="color:#beb19b;">
+                    <a class="item-create" title="Add Skill" data-type="skill"><i class="fas fa-plus-square"></i></a>
+                </span> 
                 {{getSetting "skill_name"}} 
-                <span style="font-size:0.5em">({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}})</span> 
+                <span style="font-size:0.5em">
+                    ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}})
+                </span> 
             </h1>    
             {{#each skills as |skill id|}}
-                <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
-                    <h3 style="text-transform:uppercase; display:inline; top:40%" class="inline-edit-item" data-field="name" contenteditable>{{skill.name}}</h3>
-                    <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial">{{skill.system.initial}}</span>
+                <div class="flexrow item-block item" data-item-id="{{skill.id}}">
+                    <h3 class="item-name inline-edit-item" data-field="name" contenteditable>{{skill.name}}</h3>
+                    <span class="charsheet-box inline-edit-item flex0" style="background:#beb19b; color:#6b6356" data-field="system.initial">
+                        {{skill.system.initial}}
+                    </span>
                     <span class="flexcol flex0" style="margin-right:3px">
                         <a class="stepup item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
                         <a class="stepdown item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span class="charsheet-box inline-edit-item" data-field="system.current"><a class="roll-dice">{{skill.system.current}}</a></span>
-                    <span class="flexcol flex0">
-                        <a class="stepup item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="stepdown item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                    <span class="charsheet-box inline-edit-item flex0" data-field="system.current">
+                        <a class="roll-dice">{{skill.system.current}}</a>
                     </span>
-                    <span style="color:#beb19b; margin-left:12px"><a title="Edit {{skill.name}}" class="item-edit item" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
-                    <a class="item-delete item" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a></span>
+                    <span class="flexcol flex0">
+                        <a class="stepup" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="stepdown" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                    </span>
+                    <span class="item-controls flexcol flex0">
+                        <a class="item-edit" title="Edit {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>
+                        <a class="item-delete" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a>
+                    </span>
                 </div>
             {{/each}}
+
+            <div class="breathless flexrow csf" style="align-items:center; gap:6px">
+                <h1 class="csh flex0">{{getSetting "stress_name"}}</h1>
+                {{#each stress.states as |state count|}}
+                    {{#ife state 0}}
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>
+                    {{/ife}}
+                    {{#ife state 1}}
+                        <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-solid fa-circle"></i></a>
+                    {{/ife}}
+                {{/each}}
+                {{#if stress.vulnerable}}
+                    <span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">{{localize "breathless.gen.vulnerable"}}!</span>
+                {{/if}}
+            </div>
         </div>
         
         <div class="breathless csf">
@@ -75,22 +100,24 @@
                 </span>
             </h1>
             {{#each gear as |gear id|}}
-                <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
-                    <h3 style="text-transform:uppercase; display:inline;" class="inline-edit-item" data-field="name" contenteditable>{{gear.name}}</h3>
-                    <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356;" data-field="system.initial">{{gear.system.initial}}</span>
+                <div class="flexrow item-block item" data-item-id="{{gear.id}}">
+                    <h3 class="inline-edit-item item-name" data-field="name" contenteditable>{{gear.name}}</h3>
+                    <span class="charsheet-box inline-edit-item flex0" style="background:#beb19b; color:#6b6356;" data-field="system.initial">
+                        {{gear.system.initial}}
+                    </span>
                     <span class="flexcol flex0" style="margin-right:3px">
                         <a class="stepup item" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
                         <a class="stepdown item" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span class="charsheet-box inline-edit-item" data-field="system.current">
+                    <span class="charsheet-box inline-edit-item flex0" data-field="system.current">
                         <a class="roll-dice">{{gear.system.current}}</a>
                     </span>
                     <span class="flexcol flex0">
                         <a class="stepup item" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
                         <a class="stepdown item" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span style="color:#beb19b; margin-left:12px">
-                        <a title="Edit {{gear.name}}" class="item-edit item" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
+                    <span class="item-controls flexcol flex0">
+                        <a title="Edit {{gear.name}}" class="item-edit item" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>
                         <a title="Delete {{gear.name}}" class="item-delete item" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a>
                     </span>
                 </div>
@@ -122,20 +149,5 @@
                 </a>
             </div>
         </div>
-    </div>
-
-    <div class="breathless flexrow csf" style="align-items:center; gap:6px">
-        <h1 class="csh flex0">{{getSetting "stress_name"}}</h1>
-        {{#each stress.states as |state count|}}
-            {{#ife state 0}}
-                <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>
-            {{/ife}}
-            {{#ife state 1}}
-                <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-solid fa-circle"></i></a>
-            {{/ife}}
-        {{/each}}
-        {{#if stress.vulnerable}}
-            <span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">{{localize "breathless.gen.vulnerable"}}!</span>
-        {{/if}}
     </div>
 </form>

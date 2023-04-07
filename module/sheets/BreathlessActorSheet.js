@@ -72,7 +72,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
-        html.find('.item-name').each((i, item) => {
+        html.find('.item-block').each((i, item) => {
             if (item.dataset && item.dataset.itemId) {
                 item.setAttribute('draggable', true);
                 item.addEventListener('dragstart', handler, false);
