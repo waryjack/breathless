@@ -20,7 +20,7 @@
       "maximum": "10"
     }, 
     "esmodules": ["module/breathless.js"],
-    "styles": ["style/breathless.css"],
+    "styles": ["css/breathless.css"],
     "languages": [
       {
         "lang": "en",
