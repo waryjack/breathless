@@ -25,58 +25,59 @@
     }
 }
 
-header {
+.actor-sheet-header {
     margin-bottom: 20px;
-}
 
-.header_title {
-    @include sheet_section_space();
-    @include csh_font();
-    text-align: center;
-}
-
-.header_section {
-    @include sheet_section_space();
-    
-    input[type=text] {
-        @include csf_font();
-        width: 100%;
-        padding: 12px 5px;
-        margin: 5px 0;
-        box-sizing: border-box;
-        border: none;
-        background: none;
-        border-bottom: 2px solid black;
-        font-size: 1.5em;
-    }
-
-    label {
+    .header_title {
+        @include sheet_section_space();
         @include csh_font();
-        font-size: 1.5em;
-        align-self: center;
+        text-align: center;
     }
-
-    .header_buttons {
-        display:flex;
-        flex-direction:column;
-        flex-grow:1;
-        align-items:center;
-        justify-content:space-evenly !important;
-
-        button {
-            @include button_reset();
-
-            border:2px solid black;
-            padding-left:12px;
-            padding-right:12px;
-            color:white;
-            border-style:inset;
-            background:black;
-            border-radius:5px;
-            font-size:1.25em;
-            text-align:center;
+    
+    .header_section {
+        @include sheet_section_space();
+        
+        input[type=text] {
+            @include csf_font();
+            width: 100%;
+            padding: 12px 5px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: none;
+            background: none;
+            border-bottom: 2px solid black;
+            font-size: 1.5em;
+        }
+    
+        label {
+            @include csh_font();
+            font-size: 1.5em;
+            align-self: center;
+        }
+    
+        .header_buttons {
+            display:flex;
+            flex-direction:column;
+            flex-grow:1;
+            align-items:center;
+            justify-content:space-evenly !important;
+    
+            button {
+                @include button_reset();
+    
+                border:2px solid black;
+                padding-left:12px;
+                padding-right:12px;
+                color:white;
+                border-style:inset;
+                background:black;
+                border-radius:5px;
+                font-size:1.25em;
+                text-align:center;
+            }
         }
     }
+
 }
 
 .stress_box {
@@ -112,15 +113,6 @@ header {
     a {
         font-size: 3em;
     }
-}
-
-.csf {
-    font-family: 'Permanent Marker', cursive;
-}
-
-.csh {
-    font-family: 'Londrina Solid', cursive;
-    text-transform: uppercase;
 }
 
 * {
@@ -183,4 +175,46 @@ h1,h2,h3,h4,h5 {
         text-transform: uppercase;
     }
 
+}
+
+.sheet-header {
+
+    h1 {
+        @include csh_font();
+    }
+}
+
+.dice {
+    @include csh_font();
+    align-items:center;
+    gap:6px;
+
+    h4 {
+        text-align: right;
+    }
+
+    select {
+        @include csf_font();
+        text-align:center;
+    }
+}
+
+.roll-name {
+    @include csh_font();
+    font-size:2em;
+    text-transform:uppercase;
+}
+
+.roll-outcome {
+    @include csf_font();
+    text-align:center;
+    border:1px solid rgb(71, 70, 65);
+    border-radius:3px;
+    background:rgb(177, 176, 163);
+    font-size:1.5em;
+}
+
+.roll-result {
+    @include csf_font();
+    font-size:1.5em;
 }

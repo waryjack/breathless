@@ -1,12 +1,12 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="breathless sheet-header">
+    <header class="sheet-header">
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
-        <h1><input name="name" style="font-family:'Londrina Solid', cursive;" type="text" value="{{item.name}}" placeholder="{{localize "breathless.item.placeholder.name"}}"/></h1>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{localize "breathless.item.placeholder.name"}}"/></h1>
     </header>
     <hr/>
-    <div class="breathless flexrow" style="align-items:center; gap:6px;">
-        <h4 class="csh">{{localize "breathless.dialogs.labels.initial_die"}}</h4>
-        <select class="csf" style="text-align:center;" name="system.initial" id="initial">
+    <div class="dice flexrow">
+        <h4>{{localize "breathless.dialogs.labels.initial_die"}}</h4>
+        <select name="system.initial" id="initial">
             {{#select initial}}
                 <option value="d4">{{localize "breathless.item.d4"}}</option>
                 <option value="d6">{{localize "breathless.item.d6"}}</option>
@@ -14,8 +14,8 @@
                 <option value="d10">{{localize "breathless.item.d10"}}</option>
             {{/select}}
         </select>
-        <h4 class="csh">{{localize "breathless.dialogs.labels.current_die"}}</h4>
-        <select class="csf" style="text-align:center;" name="system.current" id="current">
+        <h4>{{localize "breathless.dialogs.labels.current_die"}}</h4>
+        <select name="system.current" id="current">
             {{#select current}}
                 <option value="d4">{{localize "breathless.item.d4"}}</option>
                 <option value="d6">{{localize "breathless.item.d6"}}</option>
