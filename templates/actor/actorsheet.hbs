@@ -34,10 +34,7 @@
             </div>
             {{#each skills as |skill id|}}
                 <div class="flexrow item-block" data-item-id="{{skill.id}}">
-                    <h3 class="item-name" data-field="name" contenteditable>{{skill.name}}</h3>
-                    
-                    {{!-- <input class="item-name" data-field="name" name="name" type="text" value="{{skill.name}}"/> --}}
-                    
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{skill.id}}" type="text" value="{{skill.name}}"/>
                     <span class="item-dice-box-initial flex0" data-field="system.initial">
                         {{skill.system.initial}}
                     </span>
@@ -87,7 +84,7 @@
             </div>
             {{#each gear as |gear id|}}
                 <div class="flexrow item-block" data-item-id="{{gear.id}}">
-                    <h3 class="item-name" data-field="name" contenteditable>{{gear.name}}</h3>
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{gear.id}}" type="text" value="{{gear.name}}"/>
                     <span class="item-dice-box-initial flex0" data-field="system.initial">
                         {{gear.system.initial}}
                     </span>

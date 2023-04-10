@@ -49,6 +49,7 @@ export class BreathlessActorSheet extends ActorSheet {
         if (!this.options.editable) return;
 
         html.find('.on-click').click(this._onRoll.bind(this));
+        html.find('.inline-edit-item').blur(this._onInlineEditItem.bind(this));
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
@@ -216,6 +217,17 @@ export class BreathlessActorSheet extends ActorSheet {
         let id = dataset.itemId;
         let field = dataset.field;
         return this.actor.stepDown(id, field);
+    }
+
+    _onInlineEditItem(e) {
+        e.preventDefault();
+
+        let el = e.currentTarget;
+        let id = el.dataset.itemId;
+        let field = el.dataset.field;
+        let item = this.actor.items.get(id);
+
+        return item.update({[field]:el.value});
     }
 
     async _onCheckLoot() {
