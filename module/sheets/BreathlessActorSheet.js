@@ -78,11 +78,11 @@ export class BreathlessActorSheet extends ActorSheet {
                     return;
                 }
                 case 'item-edit': {
-                    this._onEditItem(element);
+                    this._onEditItem(dataset);
                     return;
                 }
                 case 'item-delete': {
-                    this._onDeleteItem(element);
+                    this._onDeleteItem(dataset);
                     return;
                 }
                 case 'catch-breath': {
@@ -98,11 +98,11 @@ export class BreathlessActorSheet extends ActorSheet {
                     return;
                 }
                 case 'stepup': {
-                    this._onStepUp(element);
+                    this._onStepUp(dataset);
                     return;
                 }
                 case 'stepdown': {
-                    this._onStepDown(element);
+                    this._onStepDown(dataset);
                     return;
                 }
                 case 'use-special': {
@@ -114,7 +114,7 @@ export class BreathlessActorSheet extends ActorSheet {
                     return;
                 }
                 case 'roll-dice': {
-                    this._onRollDice(element);
+                    this._onRollDice(dataset);
                     return;
                 }
                 default: {
@@ -149,15 +149,15 @@ export class BreathlessActorSheet extends ActorSheet {
         return Item.create(iData, {parent:this.actor, renderSheet:false});
     }
 
-    _onEditItem(el) {
-        let id = el.closest(".item").dataset.itemId;
+    _onEditItem(dataset) {
+        let id = dataset.itemId;
         let item = this.actor.items.get(id);
 
         item.sheet.render(true);
     }
 
-    _onDeleteItem(el) {
-        let id = el.closest(".item").dataset.itemId;
+    _onDeleteItem(dataset) {
+        let id = dataset.itemId;
 
         let d = new Dialog(
             {
@@ -200,20 +200,21 @@ export class BreathlessActorSheet extends ActorSheet {
         return this.actor.update({["system.stress.states"]:currentArray});
     }
 
-    _onRollDice(el) {
-        let id = el.closest(".item").dataset.itemId;
+    _onRollDice(dataset) {
+        console.log("dataset.itemId: ", dataset.itemId);
+        let id = dataset.itemId;
         return this.actor.rollDice(id);
     }
 
-    _onStepUp(el) {
-        let id = el.closest(".item").dataset.itemId;
-        let field = el.closest(".item").dataset.field;
+    _onStepUp(dataset) {
+        let id = dataset.itemId;
+        let field = dataset.field;
         return this.actor.stepUp(id, field);
     }
 
-    _onStepDown(el) {
-        let id = el.closest(".item").dataset.itemId;
-        let field = el.closest(".item").dataset.field;
+    _onStepDown(dataset) {
+        let id = dataset.itemId;
+        let field = dataset.field;
         return this.actor.stepDown(id, field);
     }
 

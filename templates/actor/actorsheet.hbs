@@ -35,6 +35,9 @@
             {{#each skills as |skill id|}}
                 <div class="flexrow item-block" data-item-id="{{skill.id}}">
                     <h3 class="item-name" data-field="name" contenteditable>{{skill.name}}</h3>
+                    
+                    {{!-- <input class="item-name" data-field="name" name="name" type="text" value="{{skill.name}}"/> --}}
+                    
                     <span class="item-dice-box-initial flex0" data-field="system.initial">
                         {{skill.system.initial}}
                     </span>
@@ -42,8 +45,8 @@
                         <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
                         <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span class="item-dice-box flex0" data-field="system.current">
-                        <a class="on-click" data-roll-type="roll-dice">{{skill.system.current}}</a>
+                    <span class="item-dice-box flex0">
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{skill.id}}">{{skill.system.current}}</a>
                     </span>
                     <span class="flexcol flex0">
                         <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
@@ -78,7 +81,7 @@
         
         <div>
             <div class="item-section-header">
-                <button type="button" class="on-click" data-roll-type="item-create" data-type="skill"><i class="fas fa-plus-square"></i></button> 
+                <button type="button" class="on-click" data-roll-type="item-create" data-type="gear"><i class="fas fa-plus-square"></i></button> 
                 <h2>{{getSetting "storage_name"}}</h2> 
                 ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}}, {{localize "breathless.gen.sheet.maxitems"}}: {{getSetting "storage_max"}})
             </div>
@@ -92,8 +95,8 @@
                         <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
                         <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span class="item-dice-box flex0" data-field="system.current">
-                        <a class="on-click" data-roll-type="roll-dice">{{gear.system.current}}</a>
+                    <span class="item-dice-box flex0">
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{gear.id}}">{{gear.system.current}}</a>
                     </span>
                     <span class="flexcol flex0">
                         <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
