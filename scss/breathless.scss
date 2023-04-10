@@ -40,13 +40,40 @@
     }
 
     .charsheet-section {
+        @include csf_font();
+
         margin-bottom: 10px;
+
+        .left_column {
+            margin-right:24px;
+        }
+    
+        .item-section-header {
+            @include csh_font();
+
+            margin-bottom: 5px;
+
+            button {
+                @include button_reset();
+                color: #beb19b;
+                font-size: 2em;
+            }
+        }
+
+        h2 {
+            display: inline;
+            font-size: 2em;
+        }
+    }
+
+    header {
+        margin-bottom: 20px;
     }
 
     .header_title {
         @include sheet_section_space();
         @include csh_font();
-        text-align: center
+        text-align: center;
     }
 
     .header_section {
@@ -79,16 +106,52 @@
 
             button {
                 @include button_reset();
+
                 border:2px solid black;
                 padding-left:12px;
                 padding-right:12px;
                 color:white;
                 border-style:inset;
                 background:black;
-                border-radius:2px;
+                border-radius:5px;
                 font-size:1.25em;
                 text-align:center;
             }
+        }
+    }
+
+    .stress_box {
+        position: relative;
+        @include csh_font();
+        
+        .stress {
+            align-items:center;
+            gap:6px;
+
+            a {
+                font-size:3em;
+            }
+        }
+
+        .vulnerable_message {
+            position: absolute;
+            font-size: 1em;
+            left: 5px;
+            top: 38px;
+            color: rgb(103, 38, 38);
+        }
+    }
+
+    .single-circle-button-group {
+        align-items:center;
+        gap:12px;
+
+        h2 {
+            @include csh_font();
+        }
+
+        a {
+            font-size: 3em;
         }
     }
 
@@ -121,40 +184,45 @@
         align-self: center;
     }
 
-    .charsheet-box {
-        border: 2px dotted rgb(61, 61, 61);
-        padding-left: 6px;
-        padding-right: 6px;
-        padding-top: 3px;
-        padding-bottom: 0px;
-        margin-right: 6px;
-        text-align: center;
-        font-size: 1.5em;
-        min-width: 60px;
-    }
-
-    .item {
-        margin-bottom: 10px;
-    }
-
-    .item-controls {
-        color: #877e70;
-        margin: 0px 0px 0px 15px;
-    }
-
     .item-block {
         align-items: center;
         border: 2px solid #877e7061;
         border-radius: 10px;
-        gap: 6px;
+        gap: 10px;
         padding: 5px 10px 5px 10px;
-    }
+        margin-bottom: 10px;
 
-    .item-name {
-        text-transform: uppercase;
-        display: inline;
-        top: 40%;
-        margin: 0px;
+        .item-dice-box, .item-dice-box-initial {
+            border: 2px dotted rgb(61, 61, 61);
+            padding-left: 6px;
+            padding-right: 6px;
+            padding-top: 3px;
+            padding-bottom: 0px;
+            text-align: center;
+            font-size: 1.5em;
+            min-width: 60px;
+        }
+
+        .item-dice-box {
+            background-color: #ffffff2e;
+        }
+    
+        .item-dice-box-initial {
+            background:rgba(188, 179, 164, 0.793); 
+            color:#6b6356;
+        }
+
+        .item-controls {
+            color: #877e70;
+            margin: 0px 0px 0px 10px;
+        }
+
+        .item-name {
+            text-transform: uppercase;
+            display: inline;
+            top: 40%;
+            margin: 0px;
+        }
     }
 
     .caps {

@@ -48,7 +48,7 @@ export class BreathlessActorSheet extends ActorSheet {
 
         if (!this.options.editable) return;
 
-        html.find('.rollable').click(this._onRoll.bind(this));
+        html.find('.on-click').click(this._onRoll.bind(this));
 
         // Drag/drop support
         let handler = (ev) => this._onDragStart(ev);
