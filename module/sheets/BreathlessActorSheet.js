@@ -8,7 +8,7 @@ export class BreathlessActorSheet extends ActorSheet {
         return mergeObject(super.defaultOptions, {
             classes: ['breathless', 'csbg', 'sheet', 'actor', 'actor-sheet'],
             width: 775,
-            height: 685,
+            height: 700,
             left:120,
             tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheetbody", initial: "main"}],
             dragDrop: [{dragSelector: ".dragline", dropSelector: null}]
