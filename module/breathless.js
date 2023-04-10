@@ -130,17 +130,17 @@ Hooks.on("preCreateItem", (item, data) => {
     }
 });
 
- Hooks.on('renderChatMessage', (app, html) => {
+//  Hooks.on('renderChatMessage', (app, html) => {
 
-    html.on('click', '.taskroll-msg', event => {
-        event.preventDefault();
-        // NOTE: This depends on the exact card template HTML structure.
-        $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
-     });
+//     html.on('click', '.taskroll-msg', event => {
+//         event.preventDefault();
+//         // NOTE: This depends on the exact card template HTML structure.
+//         $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
+//      });
 
-     html.on('click', '.taskroll-info', event => {
-        event.preventDefault();
-        // NOTE: This depends on the exact card template HTML structure.
-        $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
-     });
-});
+//      html.on('click', '.taskroll-info', event => {
+//         event.preventDefault();
+//         // NOTE: This depends on the exact card template HTML structure.
+//         $(event.currentTarget).siblings('.taskroll-tt').slideToggle("fast");
+//      });
+// });

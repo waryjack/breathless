@@ -1,141 +1,136 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="breathless charsheet-section sheet-header">
-        <div class="breathless header flexrow">
-            <div class="breathless header" style="text-align:center">
-                <h1 class="caps csh">{{getSetting "cs_title"}}</h1>
+    <header class="actor-sheet-header">
+        <h1 class="header_title" >{{getSetting "cs_title"}}</h1>
+        <div class="header_section flexrow">
+            <div class="flexcol flex3">
+                <div class="flexrow">
+                    <label for="name">{{localize "breathless.gen.name"}}</label>
+                    <input class="flex3" name="name" id="name" type="text" value="{{name}}"/>
+                </div>
+                <div class="flexrow">
+                    <label for="pronouns">{{localize "breathless.gen.pronouns"}}</label>
+                    <input class="flex3" name="system.pronouns" id="pronouns" type="text" value="{{pronouns}}"/>
+                </div>
+                <div class="flexrow">
+                    <label for="job-name">{{localize "breathless.gen.job"}}</label>
+                    <input class="flex3" name="system.job.name" id="job-name" type="text" value="{{job.name}}"/>
+                </div>
+            </div>
+            <div class="header_buttons">
+                <button type="button" class="on-click" data-roll-type="catch-breath">{{localize "breathless.gen.catch"}}</button>
+                {{#if (getSetting "enable_lootcheck")}}
+                    <button type="button" class="on-click" data-roll-type="loot-check">{{localize "breathless.gen.loot.check"}}</button>
+                {{/if}}
             </div>
         </div>
     </header>
-    
-    <div class="breathless charsheet-section flexrow csf">
-        <div class="flexcol flex3">
-            <div class="flexrow">
-                <h2 class="csh">{{localize "breathless.gen.name"}}</h2>
-                <span style="border-bottom:2px solid black;" data-field="name" class="charsheet-line inline-edit flex3" contenteditable>{{name}}</span>
-            </div>
-            <div class="flexrow"> 
-                <h2 class="csh">{{localize "breathless.gen.pronouns"}}</h2>
-                <span style="border-bottom:2px solid black;" data-field="system.pronouns" class="charsheet-line inline-edit flex3" contenteditable>{{pronouns}}</span>
-            </div>
-            <div class="flexrow">
-                <h2 class="csh">{{localize "breathless.gen.job"}}</h2>
-                <span style="border-bottom:2px solid black;" data-field="system.job.name" class="charsheet-line inline-edit flex3" contenteditable>{{job.name}}</span>
-            </div>
-        </div>
-        <div style="display:flex; flex-direction:column; flex-grow:1; align-items:center; justify-content:space-evenly !important">
-            <div>
-                <a class="catch-breath">
-                    <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:1.25em; text-align:center" class="csh">{{localize "breathless.gen.catch"}}</span>
-                </a>
-            </div>
-            {{#if (getSetting "enable_lootcheck")}}
-                <div>
-                    <a class="loot-check">
-                        <span style="border:2px solid black; padding-left:12px; padding-right:12px; color:white; border-style:inset; background:black; border-radius:2px;font-size:1.25em; text-align:center" class="csh">{{localize "breathless.gen.loot.check"}}</span>
-                    </a>
-                </div>
-            {{/if}}
-        </div>
-    </div>
 
-    <div class="breathless charsheet-section flexrow">
-        <div class="breathless flexcol csf" style="margin-right:24px">
-            <h1 class="csh">
-                <span style="color:#beb19b;"><a class="item-create" title="Add Skill" data-type="skill"><i class="fas fa-plus-square"></i></a></span> 
-                {{getSetting "skill_name"}} 
-                <span style="font-size:0.5em">({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}})</span> 
-            </h1>    
+    <div class="charsheet-section flexrow">
+        <div class="left_column">
+            <div class="item-section-header">
+                <button type="button" class="on-click" data-roll-type="item-create" data-type="skill"><i class="fas fa-plus-square"></i></button> 
+                <h2>{{getSetting "skill_name"}}</h2> 
+                ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}})
+            </div>
             {{#each skills as |skill id|}}
-                <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px" data-item-id="{{skill.id}}">
-                    <h3 style="text-transform:uppercase; display:inline; top:40%" class="inline-edit-item" data-field="name" contenteditable>{{skill.name}}</h3>
-                    <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356" data-field="system.initial">{{skill.system.initial}}</span>
-                    <span class="flexcol flex0" style="margin-right:3px">
-                        <a class="stepup item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="stepdown item" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                <div class="flexrow item-block" data-item-id="{{skill.id}}">
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{skill.id}}" type="text" value="{{skill.name}}"/>
+                    <span class="item-dice-box-initial flex0" data-field="system.initial">
+                        {{skill.system.initial}}
                     </span>
-                    <span class="charsheet-box inline-edit-item" data-field="system.current"><a class="roll-dice">{{skill.system.current}}</a></span>
                     <span class="flexcol flex0">
-                        <a class="stepup item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="stepdown item" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span style="color:#beb19b; margin-left:12px"><a title="Edit {{skill.name}}" class="item-edit item" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
-                    <a class="item-delete item" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a></span>
+                    <span class="item-dice-box flex0">
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{skill.id}}">{{skill.system.current}}</a>
+                    </span>
+                    <span class="flexcol flex0">
+                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                    </span>
+                    <span class="item-controls flexcol flex0">
+                        <a class="on-click" data-roll-type="item-edit" title="Edit {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>
+                        <a class="on-click" data-roll-type="item-delete" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a>
+                    </span>
                 </div>
             {{/each}}
+
+            <div class="stress_box">
+                <div class="flexrow stress">
+                    <h1 class="flex0">{{getSetting "stress_name"}}</h1>
+                    {{#each stress.states as |state count|}}
+                        {{#ife state 0}}
+                            <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-regular fa-circle"></i></a>
+                        {{/ife}}
+                        {{#ife state 1}}
+                            <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-solid fa-circle"></i></a>
+                        {{/ife}}
+                    {{/each}}
+                </div>
+                {{#if stress.vulnerable}}
+                    <div class="vulnerable_message">
+                        <span class="flex0">{{localize "breathless.gen.vulnerable"}}!</span>
+                    </div>
+                {{/if}}
+            </div>
         </div>
         
-        <div class="breathless csf">
-            <h1 class="csh"> 
-                <span style="color:#beb19b;">
-                    <a class="item-create" title="Add Item" data-type="gear"><i class="fas fa-plus-square"></i></a>
-                </span>
-                {{getSetting "storage_name"}}
-                <span style="font-size:0.5em">
-                    ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}}, {{localize "breathless.gen.sheet.maxitems"}}: {{getSetting "storage_max"}})
-                </span>
-            </h1>
+        <div>
+            <div class="item-section-header">
+                <button type="button" class="on-click" data-roll-type="item-create" data-type="gear"><i class="fas fa-plus-square"></i></button> 
+                <h2>{{getSetting "storage_name"}}</h2> 
+                ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}}, {{localize "breathless.gen.sheet.maxitems"}}: {{getSetting "storage_max"}})
+            </div>
             {{#each gear as |gear id|}}
-                <div class="flexrow item-name item" style="align-items:center; border-bottom:2px solid black; gap:6px;" data-item-id="{{gear.id}}">
-                    <h3 style="text-transform:uppercase; display:inline;" class="inline-edit-item" data-field="name" contenteditable>{{gear.name}}</h3>
-                    <span class="charsheet-box inline-edit-item" style="background:#beb19b; color:#6b6356;" data-field="system.initial">{{gear.system.initial}}</span>
-                    <span class="flexcol flex0" style="margin-right:3px">
-                        <a class="stepup item" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="stepdown item" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
-                    </span>
-                    <span class="charsheet-box inline-edit-item" data-field="system.current">
-                        <a class="roll-dice">{{gear.system.current}}</a>
+                <div class="flexrow item-block" data-item-id="{{gear.id}}">
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{gear.id}}" type="text" value="{{gear.name}}"/>
+                    <span class="item-dice-box-initial flex0" data-field="system.initial">
+                        {{gear.system.initial}}
                     </span>
                     <span class="flexcol flex0">
-                        <a class="stepup item" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="stepdown item" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
-                    <span style="color:#beb19b; margin-left:12px">
-                        <a title="Edit {{gear.name}}" class="item-edit item" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>&nbsp;
-                        <a title="Delete {{gear.name}}" class="item-delete item" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a>
+                    <span class="item-dice-box flex0">
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{gear.id}}">{{gear.system.current}}</a>
+                    </span>
+                    <span class="flexcol flex0">
+                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                    </span>
+                    <span class="item-controls flexcol flex0">
+                        <a title="Edit {{gear.name}}" class="on-click" data-roll-type="item-edit" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>
+                        <a title="Delete {{gear.name}}" class="on-click" data-roll-type="item-delete" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a>
                     </span>
                 </div>
             {{/each}}
         
             {{#if (getSetting "enable_healing")}}
-                <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-healing">
-                    <h2 class="csh" style="display:inline;">{{getSetting "healing_name"}}</h2> 
-                    <a class="use-healing">
+                <div class="flexrow single-circle-button-group" id="bl-healing">
+                    <h2>{{getSetting "healing_name"}}</h2> 
+                    <a class="on-click" data-roll-type="use-healing">
                         {{#ife healing.used true}}
-                            <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
+                            <i class="fa-solid fa-circle"></i>
                         {{/ife}}
                         {{#ife healing.used false}}
-                            <span style="font-size:3em"><i class="fa-regular fa-circle"></i></span>
+                            <i class="fa-regular fa-circle"></i>
                         {{/ife}}
                     </a>
                 </div>
             {{/if}}
 
-            <div class="breathless flexrow" style="align-items:center; gap:12px" id="bl-special">
-                <h2 class="csh" style="display:inline;">{{getSetting "special_name"}}</h2> 
-                <a class="use-special">
+            <div class="flexrow single-circle-button-group" id="bl-special">
+                <h2>{{getSetting "special_name"}}</h2> 
+                <a class="on-click" data-roll-type="use-special">
                     {{#ife special.used true}}
-                        <span style="font-size:3em"><i class="fa-solid fa-circle"></i></span>
+                        <i class="fa-solid fa-circle"></i>
                     {{/ife}}
                     {{#ife special.used false}}
-                        <span style="font-size:3em"><i class="fa-regular fa-circle"></i></span>
+                        <i class="fa-regular fa-circle"></i>
                     {{/ife}}
                 </a>
             </div>
         </div>
-    </div>
-
-    <div class="breathless flexrow csf" style="align-items:center; gap:6px">
-        <h1 class="csh flex0">{{getSetting "stress_name"}}</h1>
-        {{#each stress.states as |state count|}}
-            {{#ife state 0}}
-                <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-regular fa-circle"></i></a>
-            {{/ife}}
-            {{#ife state 1}}
-                <a style="font-size:3em;" data-pos="{{count}}" class="toggle-stress flex0"><i class="fa-solid fa-circle"></i></a>
-            {{/ife}}
-        {{/each}}
-        {{#if stress.vulnerable}}
-            <span class="csh flex0" style="font-size:2em; color:rgb(103, 38, 38);">{{localize "breathless.gen.vulnerable"}}!</span>
-        {{/if}}
     </div>
 </form>
