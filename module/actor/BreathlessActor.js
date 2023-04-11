@@ -8,16 +8,15 @@ export class BreathlessActor extends Actor {
     /** @override */
     prepareDerivedData() {
         const actorData = this;
-        this._preparePcData(actorData);
-        // this._prepareNpcData(actorData);
+        if (actorData.type == 'pc') {
+            this._preparePcData(actorData);
+        }
     }
 
     /**
      * Prepare Character type specific data
      */
     _preparePcData(actorData) {
-        if (actorData.type !== 'pc') return;
-
         const systemData = actorData.system;
 
         const count = systemData.stress.states.filter(Boolean).length;
@@ -29,14 +28,6 @@ export class BreathlessActor extends Actor {
             systemData.stress.vulnerable = false;
         }
     }
-
-    /**
-     * Prepare NPC type specific data.
-     */
-    // _prepareNpcData(actorData) {
-    //     if (actorData.type !== 'npc') return;
-    //     // const systemData = actorData.system;
-    // }
 
     rollDice(id) {
         // set some basic variables

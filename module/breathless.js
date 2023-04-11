@@ -1,6 +1,4 @@
 // Imports
-
-// import { preloadHandlebarsTemplates } from "./templates.js";
 import { registerSettings } from "./settings.js"; 
 import { BreathlessActor } from "./actor/BreathlessActor.js";
 import { BreathlessItem } from "./item/BreathlessItem.js";
@@ -9,37 +7,27 @@ import { BreathlessItemSheet } from "./sheets/BreathlessItemSheet.js";
 import { BREATHLESS } from "./config.js";
 
 // Initialize system
-
 Hooks.once("init", () => {
-    // console.log("##### Breathless | Initializing Breathless System #####");
-
     CONFIG.breathless = BREATHLESS; 
 
     // Add namespace in global 
     game.breathless = {
         BreathlessActor,
-        BreathlessActorSheet,
         BreathlessItem,
-        BreathlessItemSheet,
         registerSettings,
-    }; 
-
-    //CONFIG.debug.hooks = true;
-    
-    Actors.unregisterSheet("core", ActorSheet);
-    Items.unregisterSheet("core", ItemSheet);
-
-    Actors.registerSheet("breathless", BreathlessActorSheet, { types:["pc"], makeDefault:true});
-    Items.registerSheet("breathless", BreathlessItemSheet, { makeDefault: true});
+    };
     
     CONFIG.Actor.documentClass = BreathlessActor;
     CONFIG.Item.documentClass = BreathlessItem;
+
+    Actors.unregisterSheet("core", ActorSheet);
+    Items.unregisterSheet("core", ItemSheet);
+
+    Actors.registerSheet("breathless", BreathlessActorSheet, { makeDefault: true });
+    Items.registerSheet("breathless", BreathlessItemSheet, { makeDefault: true });
     
     // Register system settings
     registerSettings();
-
-    // Register partials templates
-    // preloadHandlebarsTemplates();
 
     // Register handlebar helpers
     Handlebars.registerHelper('ife', function(arg1, arg2, options) {

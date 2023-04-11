@@ -35,6 +35,13 @@
     "breathless.gen.catch":"Catch your Breath",
     "breathless.gen.loot.check":"Check for Loot",
 
+    "breathless.ActorNotes": "Notes",
+    "breathless.npc": {
+        "LooksNpcInput": "Looks",
+        "BehaviorsNpcInput": "Behaviors",
+        "MotivationsNpcInput": "Motivations"
+    },
+
     "breathless.settings": {
         "enable_storage": {
             "name": "Enable Storage",
