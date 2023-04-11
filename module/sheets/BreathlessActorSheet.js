@@ -1,48 +1,63 @@
+/**
+ * Extend the basic ActorSheet with some very simple modifications
+ * @extends {ActorSheet}
+ */
 export class BreathlessActorSheet extends ActorSheet {
+
+    constructor(...args) {
+        super(...args);
     
-    get template() {
-        return 'systems/breathless/templates/actor/actorsheet.hbs';
+        let width = 775;
+        let height = 700;
+        if (this.actor.type == 'npc') {
+        width = 310;
+        height = 820;
+        }
+        this.position.width = width;
+        this.position.height = height;
     }
 
+    /** @override */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ['breathless', 'csbg', 'sheet', 'actor', 'actor-sheet'],
-            width: 775,
-            height: 700,
             left:120,
-            tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheetbody", initial: "main"}],
+            tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "main" }],
             dragDrop: [{dragSelector: ".dragline", dropSelector: null}]
         });
     }
 
-    /** 
-     * @override
-     */
+    /** @override */
+    get template() {
+        return `systems/breathless/templates/actor/actor-${this.actor.type}-sheet.hbs`;
+    }
+
+    /** @override */
     getData() {
-        const charData = deepClone(this.actor.system);
+        const actorData = this.actor.toObject(false);
+        const charData = actorData.system;
         charData.config = CONFIG.BREATHLESS;
-
-        let charItems = this.actor.items;
-        // console.log("Actor: ", this.actor);
         charData.actor = this.actor;
-        charData.skills = charItems.filter(i => i.type === "skill");
-        charData.gear = charItems.filter(i => i.type === "gear");
-        charData.special = this.actor.system.special;
-        charData.storage = this.actor.system.storage;
-        charData.stress = this.actor.system.stress;
-        charData.name = this.actor.name;
-        charData.pronouns = this.actor.system.pronouns;
-        charData.job = this.actor.system.job;
-        charData.healing = this.actor.system.healing;
 
-        // charData.useHealing = (get system setting here)
+        if (actorData.type == 'pc') {
+            let charItems = this.actor.items;
+            // console.log("Actor: ", this.actor);
+            charData.skills = charItems.filter(i => i.type === "skill");
+            charData.gear = charItems.filter(i => i.type === "gear");
+            charData.special = this.actor.system.special;
+            charData.storage = this.actor.system.storage;
+            charData.stress = this.actor.system.stress;
+            charData.name = this.actor.name;
+            charData.pronouns = this.actor.system.pronouns;
+            charData.job = this.actor.system.job;
+            charData.healing = this.actor.system.healing;
+            // charData.useHealing = (get system setting here)
+        }
 
         return charData;
     }
 
-    /**
-     * @override
-     */
+    /** @override */
     activateListeners(html) {
         super.activateListeners(html);
 

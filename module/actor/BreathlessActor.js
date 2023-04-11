@@ -1,25 +1,42 @@
 export class BreathlessActor extends Actor {
  
-    /**
-     * @override
-     */
-    prepareBaseData() {
-        super.prepareBaseData();
-        const charData = this.system;
-        this.prepareCharacterData(charData);
+    /** @override */
+    prepareData() {
+        super.prepareData();
     }
 
-    prepareCharacterData(charData){
-        super.prepareDerivedData();
-        let strStates = this.system.stress.states;
-        // console.log("Stress states: ", strStates);
+    /** @override */
+    prepareDerivedData() {
+        const actorData = this;
+        this._preparePcData(actorData);
+        // this._prepareNpcData(actorData);
+    }
 
-        if(strStates[0] == true && strStates[1] == true && strStates[2] == true && strStates[3] == true) {
-            this.system.stress.vulnerable = true;
+    /**
+     * Prepare Character type specific data
+     */
+    _preparePcData(actorData) {
+        if (actorData.type !== 'pc') return;
+
+        const systemData = actorData.system;
+
+        const count = systemData.stress.states.filter(Boolean).length;
+        systemData.stress.value = count;
+
+        if(count >= systemData.stress.max) {
+            systemData.stress.vulnerable = true;
         } else {
-            this.system.stress.vulnerable = false;
+            systemData.stress.vulnerable = false;
         }
     }
+
+    /**
+     * Prepare NPC type specific data.
+     */
+    // _prepareNpcData(actorData) {
+    //     if (actorData.type !== 'npc') return;
+    //     // const systemData = actorData.system;
+    // }
 
     rollDice(id) {
         // set some basic variables

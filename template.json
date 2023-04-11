@@ -15,8 +15,14 @@
         }
     },
     "Actor":{
-        "types":["pc"],
+        "types":["pc", "npc"],
+        "templates": {
+            "base": {
+              "notes": ""
+            }
+        },
         "pc":{
+            "templates": ["base"],
             "pronouns":"",
             "job":{
                 "name":"",
@@ -34,7 +40,7 @@
             "stress":{
                 "min":0,
                 "max":4,
-                "current":0,
+                "value": [0],
                 "states":[false,false,false,false],
                 "vulnerable":false
             },
@@ -43,6 +49,12 @@
                 "max_items":3,
                 "curr_items":0
             }
+        },
+        "npc": {
+            "templates": ["base"],
+            "looks": "",
+            "behaviors": "",
+            "motivations": ""
         }
     }
 }
