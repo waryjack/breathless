@@ -33,7 +33,10 @@ export class BreathlessActorSheet extends ActorSheet {
     }
 
     /** @override */
-    getData() {
+    async getData(options) {
+        const context = await super.getData(options);
+        context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
+
         const actorData = this.actor.toObject(false);
         const charData = actorData.system;
         charData.config = CONFIG.BREATHLESS;
@@ -54,7 +57,7 @@ export class BreathlessActorSheet extends ActorSheet {
             // charData.useHealing = (get system setting here)
         }
 
-        return charData;
+        return context;
     }
 
     /** @override */
