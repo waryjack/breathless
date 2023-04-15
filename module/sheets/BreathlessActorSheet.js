@@ -33,32 +33,23 @@ export class BreathlessActorSheet extends ActorSheet {
     }
 
     /** @override */
-    async getData(options) {
-        const context = await super.getData(options);
-        context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
-
+    getData() {
+        const context = super.getData();
         const actorData = this.actor.toObject(false);
-        const actorSystemData = actorData.system;
-        actorSystemData.config = CONFIG.BREATHLESS;
-        actorSystemData.actor = this.actor;
-        actorSystemData.name = this.actor.name;
+
+        context.system = actorData.system;
+        context.flags = actorData.flags;
+
+        // Add roll data for TinyMCE editors.
+        context.rollData = context.actor.getRollData();
 
         if (actorData.type == 'pc') {
-            let charItems = this.actor.items;
-            // console.log("Actor: ", this.actor);
-            actorSystemData.skills = charItems.filter(i => i.type === "skill");
-            actorSystemData.gear = charItems.filter(i => i.type === "gear");
-            actorSystemData.special = this.actor.system.special;
-            actorSystemData.storage = this.actor.system.storage;
-            actorSystemData.stress = this.actor.system.stress;
-            actorSystemData.pronouns = this.actor.system.pronouns;
-            actorSystemData.job = this.actor.system.job;
-            actorSystemData.healing = this.actor.system.healing;
-            // actorSystemData.useHealing = (get system setting here)
+            let charItems = context.items;
+            context.skills = charItems.filter(i => i.type === "skill");
+            context.gear = charItems.filter(i => i.type === "gear");
         }
 
-        // return context;
-        return actorSystemData;
+        return context;
     }
 
     /** @override */
@@ -221,7 +212,6 @@ export class BreathlessActorSheet extends ActorSheet {
     }
 
     _onRollDice(dataset) {
-        console.log("dataset.itemId: ", dataset.itemId);
         let id = dataset.itemId;
         return this.actor.rollDice(id);
     }
