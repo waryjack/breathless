@@ -5,15 +5,15 @@
             <div class="flexcol flex3">
                 <div class="flexrow">
                     <label for="name">{{localize "breathless.gen.name"}}</label>
-                    <input class="flex3" name="name" id="name" type="text" value="{{name}}"/>
+                    <input class="flex3" name="name" id="name" type="text" value="{{actor.name}}"/>
                 </div>
                 <div class="flexrow">
                     <label for="pronouns">{{localize "breathless.gen.pronouns"}}</label>
-                    <input class="flex3" name="system.pronouns" id="pronouns" type="text" value="{{pronouns}}"/>
+                    <input class="flex3" name="system.pronouns" id="pronouns" type="text" value="{{system.pronouns}}"/>
                 </div>
                 <div class="flexrow">
                     <label for="job-name">{{localize "breathless.gen.job"}}</label>
-                    <input class="flex3" name="system.job.name" id="job-name" type="text" value="{{job.name}}"/>
+                    <input class="flex3" name="system.job.name" id="job-name" type="text" value="{{system.job.name}}"/>
                 </div>
             </div>
             <div class="header_buttons">
@@ -33,25 +33,25 @@
                 ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}})
             </div>
             {{#each skills as |skill id|}}
-                <div class="flexrow item-block" data-item-id="{{skill.id}}">
-                    <input class="inline-edit-item" data-field="name" data-item-id="{{skill.id}}" type="text" value="{{skill.name}}"/>
+                <div class="flexrow item-block" data-item-id="{{skill._id}}">
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{skill._id}}" type="text" value="{{skill.name}}"/>
                     <span class="item-dice-box-initial flex0" data-field="system.initial">
                         {{skill.system.initial}}
                     </span>
                     <span class="flexcol flex0">
-                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{skill._id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{skill._id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
                     <span class="item-dice-box flex0">
-                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{skill.id}}">{{skill.system.current}}</a>
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{skill._id}}">{{skill.system.current}}</a>
                     </span>
                     <span class="flexcol flex0">
-                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{skill.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{skill._id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{skill._id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
                     <span class="item-controls flexcol flex0">
-                        <a class="on-click" data-roll-type="item-edit" title="Edit {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-pencil"></i></a>
-                        <a class="on-click" data-roll-type="item-delete" title="Delete {{skill.name}}" data-item-id="{{skill.id}}"><i class="fa-solid fa-xmark"></i></a>
+                        <a class="on-click" data-roll-type="item-edit" title="Edit {{skill.name}}" data-item-id="{{skill._id}}"><i class="fa-solid fa-pencil"></i></a>
+                        <a class="on-click" data-roll-type="item-delete" title="Delete {{skill.name}}" data-item-id="{{skill._id}}"><i class="fa-solid fa-xmark"></i></a>
                     </span>
                 </div>
             {{/each}}
@@ -59,7 +59,7 @@
             <div class="stress_box">
                 <div class="flexrow stress">
                     <h1 class="flex0">{{getSetting "stress_name"}}</h1>
-                    {{#each stress.states as |state count|}}
+                    {{#each system.stress.states as |state count|}}
                         {{#ife state 0}}
                             <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-regular fa-circle"></i></a>
                         {{/ife}}
@@ -68,7 +68,7 @@
                         {{/ife}}
                     {{/each}}
                 </div>
-                {{#if stress.vulnerable}}
+                {{#if system.stress.vulnerable}}
                     <div class="vulnerable_message">
                         <span class="flex0">{{localize "breathless.gen.vulnerable"}}!</span>
                     </div>
@@ -83,25 +83,25 @@
                 ({{localize "breathless.gen.initial"}}/{{localize "breathless.gen.current.long"}}, {{localize "breathless.gen.sheet.maxitems"}}: {{getSetting "storage_max"}})
             </div>
             {{#each gear as |gear id|}}
-                <div class="flexrow item-block" data-item-id="{{gear.id}}">
-                    <input class="inline-edit-item" data-field="name" data-item-id="{{gear.id}}" type="text" value="{{gear.name}}"/>
+                <div class="flexrow item-block" data-item-id="{{gear._id}}">
+                    <input class="inline-edit-item" data-field="name" data-item-id="{{gear._id}}" type="text" value="{{gear.name}}"/>
                     <span class="item-dice-box-initial flex0" data-field="system.initial">
                         {{gear.system.initial}}
                     </span>
                     <span class="flexcol flex0">
-                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="initial" data-item-id="{{gear._id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="initial" data-item-id="{{gear._id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
                     <span class="item-dice-box flex0">
-                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{gear.id}}">{{gear.system.current}}</a>
+                        <a class="on-click" data-roll-type="roll-dice" data-field="system.current" data-item-id="{{gear._id}}">{{gear.system.current}}</a>
                     </span>
                     <span class="flexcol flex0">
-                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-up"></i></a>
-                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{gear.id}}"><i class="fa-solid fa-caret-down"></i></a>
+                        <a class="on-click" data-roll-type="stepup" data-field="current" data-item-id="{{gear._id}}"><i class="fa-solid fa-caret-up"></i></a>
+                        <a class="on-click" data-roll-type="stepdown" data-field="current" data-item-id="{{gear._id}}"><i class="fa-solid fa-caret-down"></i></a>
                     </span>
                     <span class="item-controls flexcol flex0">
-                        <a title="Edit {{gear.name}}" class="on-click" data-roll-type="item-edit" data-item-id="{{gear.id}}"><i class="fa-solid fa-pencil"></i></a>
-                        <a title="Delete {{gear.name}}" class="on-click" data-roll-type="item-delete" data-item-id="{{gear.id}}"><i class="fa-solid fa-xmark"></i></a>
+                        <a title="Edit {{gear.name}}" class="on-click" data-roll-type="item-edit" data-item-id="{{gear._id}}"><i class="fa-solid fa-pencil"></i></a>
+                        <a title="Delete {{gear.name}}" class="on-click" data-roll-type="item-delete" data-item-id="{{gear._id}}"><i class="fa-solid fa-xmark"></i></a>
                     </span>
                 </div>
             {{/each}}
@@ -110,10 +110,10 @@
                 <div class="flexrow single-circle-button-group" id="bl-healing">
                     <h2>{{getSetting "healing_name"}}</h2> 
                     <a class="on-click" data-roll-type="use-healing">
-                        {{#ife healing.used true}}
+                        {{#ife system.healing.used true}}
                             <i class="fa-solid fa-circle"></i>
                         {{/ife}}
-                        {{#ife healing.used false}}
+                        {{#ife system.healing.used false}}
                             <i class="fa-regular fa-circle"></i>
                         {{/ife}}
                     </a>
@@ -123,10 +123,10 @@
             <div class="flexrow single-circle-button-group" id="bl-special">
                 <h2>{{getSetting "special_name"}}</h2> 
                 <a class="on-click" data-roll-type="use-special">
-                    {{#ife special.used true}}
+                    {{#ife system.special.used true}}
                         <i class="fa-solid fa-circle"></i>
                     {{/ife}}
-                    {{#ife special.used false}}
+                    {{#ife system.special.used false}}
                         <i class="fa-regular fa-circle"></i>
                     {{/ife}}
                 </a>

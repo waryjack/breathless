@@ -222,3 +222,36 @@ h1,h2,h3,h4,h5 {
     @include csf_font();
     font-size:1.5em;
 }
+
+.npc {
+    @include csf_font();
+    height: 100%;
+
+    header {
+        height: 100%;
+        
+        input[type=text] {
+            @include csh_font();
+    
+            text-align: center;
+            font-size: 2em;
+            text-transform: uppercase;
+            margin: 5px 0;
+            padding: 20px;
+        }
+
+        textarea {
+            @include csf_font();
+            resize: none;
+        }
+    }
+    
+    section {
+        height: 100%;
+
+        .editor {
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+}

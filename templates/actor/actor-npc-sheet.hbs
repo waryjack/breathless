@@ -1,0 +1,17 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header>
+    <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize "breathless.gen.name"}}"/>
+    <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <textarea name="system.looks" type="text" value="{{system.looks}}" placeholder="{{localize "breathless.npc.LooksNpcInput"}}">{{system.looks}}</textarea>
+    <textarea name="system.behaviors" type="text" value="{{system.behaviors}}" placeholder="{{localize "breathless.npc.BehaviorsNpcInput"}}">{{system.behaviors}}</textarea>
+    <textarea name="system.motivations" type="text" value="{{system.motivations}}" placeholder="{{localize "breathless.npc.MotivationsNpcInput"}}">{{system.motivations}}</textarea>
+  </header>
+  
+  <section>
+    <h2>{{localize "breathless.ActorNotes"}}</h2>
+    {{editor system.notes target="system.notes" rollData=rollData button=true owner=owner editable=editable}}
+  </section>
+
+</form>

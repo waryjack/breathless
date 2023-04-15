@@ -1,23 +1,31 @@
 export class BreathlessActor extends Actor {
  
-    /**
-     * @override
-     */
-    prepareBaseData() {
-        super.prepareBaseData();
-        const charData = this.system;
-        this.prepareCharacterData(charData);
+    /** @override */
+    prepareData() {
+        super.prepareData();
     }
 
-    prepareCharacterData(charData){
-        super.prepareDerivedData();
-        let strStates = this.system.stress.states;
-        // console.log("Stress states: ", strStates);
+    /** @override */
+    prepareDerivedData() {
+        const actorData = this;
+        if (actorData.type == 'pc') {
+            this._preparePcData(actorData);
+        }
+    }
 
-        if(strStates[0] == true && strStates[1] == true && strStates[2] == true && strStates[3] == true) {
-            this.system.stress.vulnerable = true;
+    /**
+     * Prepare Character type specific data
+     */
+    _preparePcData(actorData) {
+        const systemData = actorData.system;
+
+        const count = systemData.stress.states.filter(Boolean).length;
+        systemData.stress.value = count;
+
+        if(count >= systemData.stress.max) {
+            systemData.stress.vulnerable = true;
         } else {
-            this.system.stress.vulnerable = false;
+            systemData.stress.vulnerable = false;
         }
     }
 
@@ -119,7 +127,7 @@ export class BreathlessActor extends Actor {
 
         // toggle down at least 2 stress boxes
         let states = this.system.stress.states;
-        // console.log('heal before: ', states);
+        
         if(states[3] == true && states[2] == true) {
             states[3] = false;
             states[2] = false;
@@ -133,7 +141,6 @@ export class BreathlessActor extends Actor {
             states[0] = false;
         }
 
-        // console.log('heal after: ', states);
         this.update({"system.stress.states":states});
         this.sheet.render(true);
     }
@@ -193,7 +200,6 @@ export class BreathlessActor extends Actor {
         let die = item.system[field]
         let stepdown = "";
 
-        // console.log("Item: ", item, "type: ", iType);
         if(iType === "gear") {
             switch (die) {
                 case "d10": {
@@ -225,9 +231,10 @@ export class BreathlessActor extends Actor {
         return item.update({[updateField]:stepdown});
     }
 
+    // The SRD says that you only reset skills when you "catch your breath"
     catchBreath() {
-        let stress = this.system.stress;
-        let states = stress.states;
+        // let stress = this.system.stress;
+        // let states = stress.states;
         let skills = this.items;
 
         // reset all skills to initial levels
@@ -239,19 +246,18 @@ export class BreathlessActor extends Actor {
         });
 
         // clear 1 stress
-        // console.log("stress states in catchBreath: ", states);
-        if(states[3] == true) {
-            states[3] = false;
-        } else if (states[2] == true) {
-            states[2] = false;
-        } else if (states[1] == true) {
-            states[1] = false;
-        } else if (states[0] == true) {
-            states[0] = false;
-        }
-        // console.log("stress states in catchBreath 2: ", states);
-        this.update({"system.stress.states":states});
-        this.sheet.render(true);
+        // if(states[3] == true) {
+        //     states[3] = false;
+        // } else if (states[2] == true) {
+        //     states[2] = false;
+        // } else if (states[1] == true) {
+        //     states[1] = false;
+        // } else if (states[0] == true) {
+        //     states[0] = false;
+        // }
+        
+        // this.update({"system.stress.states":states});
+        // this.sheet.render(true);
 
         let pcName = this.name;
         // notify GM that it happened
