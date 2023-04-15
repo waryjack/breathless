@@ -23,11 +23,17 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 - Ability add and use Skills, dice type will change with use
 - Ability add and use Gear, dice type will change with use
 - System settings to help modify the sheet to match different versions of Breathless games
+- Simple NPC Sheet
 
 ## To Be Done
 
-- Create a simple NPC Sheet
 - Create a sample Loot table
+
+#### Character Sheet
+
+- Show the character image
+- Notes page
+- Add some Gasps as optional rules
 
 ## How to Install
 
