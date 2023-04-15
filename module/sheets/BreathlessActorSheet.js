@@ -38,26 +38,27 @@ export class BreathlessActorSheet extends ActorSheet {
         context.enrichedNotes = await TextEditor.enrichHTML(this.object.system.notes, {async: true});
 
         const actorData = this.actor.toObject(false);
-        const charData = actorData.system;
-        charData.config = CONFIG.BREATHLESS;
-        charData.actor = this.actor;
+        const actorSystemData = actorData.system;
+        actorSystemData.config = CONFIG.BREATHLESS;
+        actorSystemData.actor = this.actor;
+        actorSystemData.name = this.actor.name;
 
         if (actorData.type == 'pc') {
             let charItems = this.actor.items;
             // console.log("Actor: ", this.actor);
-            charData.skills = charItems.filter(i => i.type === "skill");
-            charData.gear = charItems.filter(i => i.type === "gear");
-            charData.special = this.actor.system.special;
-            charData.storage = this.actor.system.storage;
-            charData.stress = this.actor.system.stress;
-            charData.name = this.actor.name;
-            charData.pronouns = this.actor.system.pronouns;
-            charData.job = this.actor.system.job;
-            charData.healing = this.actor.system.healing;
-            // charData.useHealing = (get system setting here)
+            actorSystemData.skills = charItems.filter(i => i.type === "skill");
+            actorSystemData.gear = charItems.filter(i => i.type === "gear");
+            actorSystemData.special = this.actor.system.special;
+            actorSystemData.storage = this.actor.system.storage;
+            actorSystemData.stress = this.actor.system.stress;
+            actorSystemData.pronouns = this.actor.system.pronouns;
+            actorSystemData.job = this.actor.system.job;
+            actorSystemData.healing = this.actor.system.healing;
+            // actorSystemData.useHealing = (get system setting here)
         }
 
-        return context;
+        // return context;
+        return actorSystemData;
     }
 
     /** @override */
