@@ -34,7 +34,7 @@
     "initiative":null,
     "gridDistance": 5,
     "gridUnits": "ft",
-    "primaryTokenAttribute": null,
+    "primaryTokenAttribute": "stress",
     "secondaryTokenAttribute": null,
     "url": "https://github.com/waryjack/breathless",
     "manifest": "https://github.com/waryjack/breathless/releases/latest/download/system.json",
