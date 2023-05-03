@@ -57,23 +57,28 @@
         },
         "cs_title": {
             "name": "Character Sheet Title",
-            "hint": "Custom title for the character sheet"
+            "hint": "Custom title for the character sheet",
+            "default": "Character Sheet"
         },
         "job_name": {
             "name": "Job Custom Name",
-            "hint": "Set the displayed name for the Job label in your game (e.g. Profession, Role, etc.)"
+            "hint": "Set the displayed name for the Job label in your game (e.g. Profession, Role, etc.)",
+            "default": "Job"
         },
         "loot_name": {
-            "name": "Check for Loot Custom Name",
-            "hint": "Set the displayed name for the Check for Loot button in your game (e.g. Scavenge, Search, etc.)"
+            "name": "Loot Custom Name",
+            "hint": "Set the displayed name for the 'Check for Loot' button in your game (e.g. Scavenge, Search, etc.)",
+            "default": "Check for Loot"
         },
         "skill_name": {
             "name": "Skills Custom Name",
-            "hint": "Set the displayed name for skills in your game (e.g. abilities, talents, etc.)"
+            "hint": "Set the displayed name for skills in your game (e.g. abilities, talents, etc.)",
+            "default": "Skills"
         },
         "storage_name": {
             "name": "Storage Custom Name",
-            "hint": "Custom name for storage - e.g. backpack, bag, kit, etc."
+            "hint": "Custom name for storage - e.g. backpack, bag, kit, etc.",
+            "default": "Backpack"
         },
         "storage_max": {
             "name": "Max Storage Capacity",
@@ -81,15 +86,18 @@
         },
         "healing_name": {
             "name": "Healing Custom Name",
-            "hint": "Set the displayed name for Healing in your game (e.g. medkit, spell, bandage, etc.)"
+            "hint": "Set the displayed name for Healing in your game (e.g. medkit, spell, bandage, etc.)",
+            "default": "Medkit"
         },
         "stress_name": {
             "name": "Stress Custom Name",
-            "hint": "Custom name for Stress in your game"
+            "hint": "Custom name for Stress in your game",
+            "default": "Stress"
         },
         "special_name": {
             "name": "Special Ability Custom Name",
-            "hint": "Name for special ability - e.g. Stunt, Truth, etc."
+            "hint": "Name for special ability - e.g. Stunt, Truth, etc.",
+            "default": "Stunt"
         },
         "special_unrolled": {
             "name": "Special Ability Unrolled",

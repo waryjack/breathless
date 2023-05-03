@@ -19,7 +19,7 @@
             <div class="header_buttons">
                 <button type="button" class="on-click" data-roll-type="catch-breath">{{localize "breathless.gen.catch"}}</button>
                 {{#if (getSetting "enable_lootcheck")}}
-                    <button type="button" class="on-click" data-roll-type="loot-check">{{localize "breathless.gen.loot.check"}}</button>
+                    <button type="button" class="on-click" data-roll-type="loot-check">{{getSetting "loot_name"}}</button>
                 {{/if}}
             </div>
         </div>

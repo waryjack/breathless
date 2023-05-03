@@ -43,7 +43,16 @@ export const registerSettings = function() {
         scope: "world",
         config:true,
         type:String,
-        default:"breathless.gen.job"
+        default: "Job"
+    });
+
+    game.settings.register("breathless", "loot_name", {
+        name:"breathless.settings.loot_name.name",
+        hint:"breathless.settings.loot_name.hint",
+        scope: "world",
+        config:true,
+        type:String,
+        default: "Check for Loot"
     });
 
     game.settings.register("breathless", "skill_name", {
