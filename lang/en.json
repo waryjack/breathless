@@ -59,6 +59,14 @@
             "name": "Character Sheet Title",
             "hint": "Custom title for the character sheet"
         },
+        "job_name": {
+            "name": "Job Custom Name",
+            "hint": "Set the displayed name for the Job label in your game (e.g. Profession, Role, etc.)"
+        },
+        "loot_name": {
+            "name": "Check for Loot Custom Name",
+            "hint": "Set the displayed name for the Check for Loot button in your game (e.g. Scavenge, Search, etc.)"
+        },
         "skill_name": {
             "name": "Skills Custom Name",
             "hint": "Set the displayed name for skills in your game (e.g. abilities, talents, etc.)"

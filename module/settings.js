@@ -37,6 +37,15 @@ export const registerSettings = function() {
         default: "Character Sheet"
     });
 
+    game.settings.register("breathless", "job_name", {
+        name:"breathless.settings.job_name.name",
+        hint:"breathless.settings.job_name.hint",
+        scope: "world",
+        config:true,
+        type:String,
+        default:"breathless.gen.job"
+    });
+
     game.settings.register("breathless", "skill_name", {
         name:"breathless.settings.skill_name.name",
         hint:"breathless.settings.skill_name.hint",
