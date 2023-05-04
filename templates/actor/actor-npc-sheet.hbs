@@ -9,9 +9,12 @@
     <textarea name="system.motivations" type="text" value="{{system.motivations}}" placeholder="{{localize "breathless.npc.MotivationsNpcInput"}}">{{system.motivations}}</textarea>
   </header>
   
-  <section>
-    <h2>{{localize "breathless.ActorNotes"}}</h2>
-    {{editor system.notes target="system.notes" rollData=rollData button=true owner=owner editable=editable}}
-  </section>
+  {{!-- Notes --}}
+  <div>
+      <h2>{{localize "breathless.ActorNotes"}}</h2>
+      <div class="notes">
+          {{editor system.notes target="system.notes" button=true engine="prosemirror" collaborate=false}}
+      </div>
+  </div>
 
 </form>

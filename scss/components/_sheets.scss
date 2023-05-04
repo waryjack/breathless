@@ -1,16 +1,14 @@
 .charsheet-section {
     @include csf_font();
 
-    margin-bottom: 10px;
-
     .left_column {
         margin-right:24px;
     }
 
     .item-section-header {
         @include csh_font();
-
         margin-bottom: 5px;
+        padding-top: 10px;
 
         button {
             @include button_reset();
@@ -25,8 +23,32 @@
     }
 }
 
+.resource-bar {
+    background-color: #00000015;
+    border-top: 2px solid #00000047;
+    padding-top: 5px;
+    border-bottom: 2px solid #00000047;
+}
+
 .actor-sheet-header {
-    margin-bottom: 20px;
+    @include sheet_section_space();
+    flex: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .profile-img {
+        flex: 0 0 150px;
+        height: 150px;
+        margin-right: 10px;
+        object-fit: contain;
+    }
+
+    .header-fields {
+        flex: 1;
+    }
 
     .header_title {
         @include sheet_section_space();
@@ -35,7 +57,6 @@
     }
     
     .header_section {
-        @include sheet_section_space();
         
         input[type=text] {
             @include csf_font();
@@ -46,6 +67,7 @@
             border: none;
             background: none;
             border-bottom: 2px solid black;
+            border-radius: 0;
             font-size: 1.5em;
         }
     
@@ -57,7 +79,7 @@
     
         .header_buttons {
             @include csh_font();
-
+            margin-left: 5px;
             display:flex;
             flex-direction:column;
             flex-grow:1;
@@ -81,6 +103,17 @@
         }
     }
 
+}
+
+.notes {
+    border-radius: 5px;
+    border: 2px solid #00000047;
+    height: 135px;
+    padding: 0 5px 0 5px;
+
+    .editor {
+        height: 100%;
+    }
 }
 
 .stress_box {
@@ -245,13 +278,9 @@ h1,h2,h3,h4,h5 {
             resize: none;
         }
     }
-    
-    section {
-        height: 100%;
 
-        .editor {
-            height: 100%;
-            overflow: hidden;
-        }
+    .notes {
+        height: 215px;
     }
+
 }

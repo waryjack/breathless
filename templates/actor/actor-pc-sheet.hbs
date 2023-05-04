@@ -1,32 +1,85 @@
 <form class="{{cssClass}}" autocomplete="off">
-    <header class="actor-sheet-header">
-        <h1 class="header_title" >{{getSetting "cs_title"}}</h1>
-        <div class="header_section flexrow">
-            <div class="flexcol flex3">
-                <div class="flexrow">
-                    <label for="name">{{localize "breathless.gen.name"}}</label>
-                    <input class="flex3" name="name" id="name" type="text" value="{{actor.name}}"/>
+    <header class="actor-sheet-header flexrow">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <div class="header-fields">
+            <h1 class="header_title" >{{getSetting "cs_title"}}</h1>
+            <div class="header_section flexrow">
+                <div class="flexcol flex2">
+                    <div class="flexrow">
+                        <label for="name">{{localize "breathless.gen.name"}}</label>
+                        <input class="flex3" name="name" id="name" type="text" value="{{actor.name}}"/>
+                    </div>
+                    <div class="flexrow">
+                        <label for="pronouns">{{localize "breathless.gen.pronouns"}}</label>
+                        <input class="flex3" name="system.pronouns" id="pronouns" type="text" value="{{system.pronouns}}"/>
+                    </div>
+                    <div class="flexrow">
+                        <label for="job-name">{{getSetting "job_name"}}</label>
+                        <input class="flex3" name="system.job.name" id="job-name" type="text" value="{{system.job.name}}"/>
+                    </div>
                 </div>
-                <div class="flexrow">
-                    <label for="pronouns">{{localize "breathless.gen.pronouns"}}</label>
-                    <input class="flex3" name="system.pronouns" id="pronouns" type="text" value="{{system.pronouns}}"/>
+                <div class="header_buttons">
+                    <button type="button" class="on-click" data-roll-type="catch-breath">{{localize "breathless.gen.catch"}}</button>
+                    {{#if (getSetting "enable_lootcheck")}}
+                        <button type="button" class="on-click" data-roll-type="loot-check">{{getSetting "loot_name"}}</button>
+                    {{/if}}
                 </div>
-                <div class="flexrow">
-                    <label for="job-name">{{getSetting "job_name"}}</label>
-                    <input class="flex3" name="system.job.name" id="job-name" type="text" value="{{system.job.name}}"/>
-                </div>
-            </div>
-            <div class="header_buttons">
-                <button type="button" class="on-click" data-roll-type="catch-breath">{{localize "breathless.gen.catch"}}</button>
-                {{#if (getSetting "enable_lootcheck")}}
-                    <button type="button" class="on-click" data-roll-type="loot-check">{{getSetting "loot_name"}}</button>
-                {{/if}}
             </div>
         </div>
     </header>
+    <div class="resource-bar grid grid-4col">
+        {{!-- Stress --}}
+        <div class="stress_box grid-span-2">
+            <div class="flexrow stress">
+                <h1 class="flex0">{{getSetting "stress_name"}}</h1>
+                {{#each system.stress.states as |state count|}}
+                    {{#ife state 0}}
+                        <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-regular fa-circle"></i></a>
+                    {{/ife}}
+                    {{#ife state 1}}
+                        <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-solid fa-circle"></i></a>
+                    {{/ife}}
+                {{/each}}
+            </div>
+            {{#if system.stress.vulnerable}}
+                <div class="vulnerable_message">
+                    <span class="flex0">{{localize "breathless.gen.vulnerable"}}!</span>
+                </div>
+            {{/if}}
+        </div>
+
+        {{!-- Medkit --}}
+        {{#if (getSetting "enable_healing")}}
+            <div class="flexrow single-circle-button-group" id="bl-healing">
+                <h2>{{getSetting "healing_name"}}</h2> 
+                <a class="on-click" data-roll-type="use-healing">
+                    {{#ife system.healing.used true}}
+                        <i class="fa-solid fa-circle"></i>
+                    {{/ife}}
+                    {{#ife system.healing.used false}}
+                        <i class="fa-regular fa-circle"></i>
+                    {{/ife}}
+                </a>
+            </div>
+        {{/if}}
+
+        {{!-- Stunt --}}
+        <div class="flexrow single-circle-button-group" id="bl-special">
+            <h2>{{getSetting "special_name"}}</h2> 
+            <a class="on-click" data-roll-type="use-special">
+                {{#ife system.special.used true}}
+                    <i class="fa-solid fa-circle"></i>
+                {{/ife}}
+                {{#ife system.special.used false}}
+                    <i class="fa-regular fa-circle"></i>
+                {{/ife}}
+            </a>
+        </div>
+    </div>
 
     <div class="charsheet-section flexrow">
         <div class="left_column">
+            {{!-- Skills --}}
             <div class="item-section-header">
                 <button type="button" class="on-click" data-roll-type="item-create" data-type="skill"><i class="fas fa-plus-square"></i></button> 
                 <h2>{{getSetting "skill_name"}}</h2> 
@@ -55,28 +108,10 @@
                     </span>
                 </div>
             {{/each}}
-
-            <div class="stress_box">
-                <div class="flexrow stress">
-                    <h1 class="flex0">{{getSetting "stress_name"}}</h1>
-                    {{#each system.stress.states as |state count|}}
-                        {{#ife state 0}}
-                            <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-regular fa-circle"></i></a>
-                        {{/ife}}
-                        {{#ife state 1}}
-                            <a data-pos="{{count}}" class="on-click flex0" data-roll-type="toggle-stress"><i class="fa-solid fa-circle"></i></a>
-                        {{/ife}}
-                    {{/each}}
-                </div>
-                {{#if system.stress.vulnerable}}
-                    <div class="vulnerable_message">
-                        <span class="flex0">{{localize "breathless.gen.vulnerable"}}!</span>
-                    </div>
-                {{/if}}
-            </div>
         </div>
         
         <div>
+            {{!-- Gear --}}
             <div class="item-section-header">
                 <button type="button" class="on-click" data-roll-type="item-create" data-type="gear"><i class="fas fa-plus-square"></i></button> 
                 <h2>{{getSetting "storage_name"}}</h2> 
@@ -106,30 +141,12 @@
                 </div>
             {{/each}}
         
-            {{#if (getSetting "enable_healing")}}
-                <div class="flexrow single-circle-button-group" id="bl-healing">
-                    <h2>{{getSetting "healing_name"}}</h2> 
-                    <a class="on-click" data-roll-type="use-healing">
-                        {{#ife system.healing.used true}}
-                            <i class="fa-solid fa-circle"></i>
-                        {{/ife}}
-                        {{#ife system.healing.used false}}
-                            <i class="fa-regular fa-circle"></i>
-                        {{/ife}}
-                    </a>
+            {{!-- Notes --}}
+            <div>
+                <h2>{{localize "breathless.ActorNotes"}}</h2>
+                <div class="notes">
+                    {{editor system.notes target="system.notes" button=true engine="prosemirror" collaborate=false}}
                 </div>
-            {{/if}}
-
-            <div class="flexrow single-circle-button-group" id="bl-special">
-                <h2>{{getSetting "special_name"}}</h2> 
-                <a class="on-click" data-roll-type="use-special">
-                    {{#ife system.special.used true}}
-                        <i class="fa-solid fa-circle"></i>
-                    {{/ife}}
-                    {{#ife system.special.used false}}
-                        <i class="fa-regular fa-circle"></i>
-                    {{/ife}}
-                </a>
             </div>
         </div>
     </div>
