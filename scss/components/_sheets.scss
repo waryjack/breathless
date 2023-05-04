@@ -2,7 +2,11 @@
     @include csf_font();
 
     .left_column {
-        margin-right:24px;
+        margin-right:10px;
+    }
+
+    .right_column {
+        margin-left:10px;
     }
 
     .item-section-header {

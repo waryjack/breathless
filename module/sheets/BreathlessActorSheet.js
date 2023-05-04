@@ -8,10 +8,10 @@ export class BreathlessActorSheet extends ActorSheet {
         super(...args);
     
         let width = 775;
-        let height = 700;
+        let height = 710;
         if (this.actor.type == 'npc') {
-        width = 310;
-        height = 820;
+            width = 310;
+            height = 820;
         }
         this.position.width = width;
         this.position.height = height;
