@@ -1,5 +1,7 @@
-.charsheet-section {
+.sheet-body {
     @include csf_font();
+}
+.main-tab-section {
 
     .left_column {
         margin-right:10px;
@@ -27,11 +29,51 @@
     }
 }
 
-.resource-bar {
-    background-color: #00000015;
-    border-top: 2px solid #00000047;
+.tab-bar {
     padding-top: 5px;
-    border-bottom: 2px solid #00000047;
+    background-color: rgb(0 0 0 / 2%);
+    border-top: 3px solid rgb(0 0 0 / 5%);
+    border-bottom: 3px solid rgb(0 0 0 / 5%);
+}
+
+nav.sheet-tabs {
+    @include csf_font();
+    margin: 0 -10px 20px -10px;
+    padding: 0;
+
+    .item {
+        padding: 8px;
+    }
+}
+
+.bio-tab {
+    @include sheet_section_space();
+    flex: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .bio-section {
+        flex: 0 0;
+        margin: 5px 20px 0 0;
+    }
+
+    .notes-section {
+        flex: 1;
+
+        .notes {
+            border-radius: 5px;
+            border: 2px solid #00000047;
+            height: 390px;
+            padding: 0 5px 0 5px;
+        
+            .editor {
+                height: 100%;
+            }
+        }
+    }
 }
 
 .actor-sheet-header {
@@ -48,10 +90,6 @@
         height: 150px;
         margin-right: 10px;
         object-fit: contain;
-    }
-
-    .header-fields {
-        flex: 1;
     }
 
     .header_title {
@@ -109,36 +147,33 @@
 
 }
 
-.notes {
-    border-radius: 5px;
-    border: 2px solid #00000047;
-    height: 135px;
-    padding: 0 5px 0 5px;
+.resource-box {
+    background-color: rgb(0 0 0 / 2%);
+    border: 3px solid rgb(0 0 0 / 5%);
+    border-radius: 10px;
+    padding: 10px 5px 5px 10px;
 
-    .editor {
-        height: 100%;
-    }
-}
-
-.stress_box {
-    position: relative;
-    @include csh_font();
+    .stress_box {
+        position: relative;
+        @include csh_font();
+        
+        .stress {
+            align-items:center;
+            gap:16px;
+            // justify-content: center;
     
-    .stress {
-        align-items:center;
-        gap:6px;
-
-        a {
-            font-size:3em;
+            a {
+                font-size:3em;
+            }
         }
-    }
-
-    .vulnerable_message {
-        position: absolute;
-        font-size: 1em;
-        left: 5px;
-        top: 38px;
-        color: rgb(103, 38, 38);
+    
+        .vulnerable_message {
+            position: absolute;
+            font-size: 1em;
+            left: 10px;
+            top: 38px;
+            color: rgb(103, 38, 38);
+        }
     }
 }
 
