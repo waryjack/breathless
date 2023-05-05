@@ -100,6 +100,10 @@ export class BreathlessActorSheet extends ActorSheet {
                     this.actor.catchBreath();
                     return;
                 }
+                case 'lay-low': {
+                    this.actor.layLow();
+                    return;
+                }
                 case 'loot-check': {
                     this._onCheckLoot();
                     return;

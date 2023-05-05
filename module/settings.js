@@ -46,6 +46,15 @@ export const registerSettings = function() {
         default: "Job"
     });
 
+    game.settings.register("breathless", "lay_low", {
+        name:"breathless.settings.lay_low.name",
+        hint:"breathless.settings.lay_low.hint",
+        scope: "world",
+        config:true,
+        type:String,
+        default: "Lay Low Awhile"
+    });
+
     game.settings.register("breathless", "loot_name", {
         name:"breathless.settings.loot_name.name",
         hint:"breathless.settings.loot_name.hint",

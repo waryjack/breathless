@@ -15,7 +15,8 @@
         "roll":"Roll",
         "result": "Result:",
         "catch":"Catch your Breath",
-        "loot.check":"Check for Loot"
+        "loot.check":"Check for Loot",
+        "lay-low": "Lay Low Awhile"
     },
 
     "breathless.tab": {
@@ -39,8 +40,9 @@
         "labels.initial_die": "Initial Die",
         "labels.current_die": "Current Die"
     },
-    
+
     "breathless.chatMessage.healUsed": "<b>NOTE</b>: {pcName} used Catch Your Breath.",
+    "breathless.chatMessage.layLowUsed": "<b>NOTE</b>: {pcName} used Lay Low Awhile.",
     "breathless.error.lootCheck": "There is no Loot table set up. Create a new Rollable Table called \"Loot\", then try again.",
     
     "breathless.interface.warning.maxstorage": "You can't add anything else to your {storeName}.",
@@ -74,6 +76,11 @@
             "name": "Job Custom Name",
             "hint": "Set the displayed name for the Job label in your game (e.g. Profession, Role, etc.)",
             "default": "Job"
+        },
+        "lay_low": {
+            "name": "Lay Low Awhile Custom Name",
+            "hint": "Set the displayed name for the 'Lay Low Awhile' button in your game (e.g. Take a break, etc.)",
+            "default": "Lay Low Awhile"
         },
         "loot_name": {
             "name": "Loot Custom Name",
