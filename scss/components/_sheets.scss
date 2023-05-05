@@ -68,6 +68,7 @@ nav.sheet-tabs {
             border: 2px solid #00000047;
             height: 390px;
             padding: 0 5px 0 5px;
+            background: rgba(0, 0, 0, 0.05);
         
             .editor {
                 height: 100%;
@@ -320,6 +321,14 @@ h1,h2,h3,h4,h5 {
 
     .notes {
         height: 215px;
+        border-radius: 5px;
+        border: 2px solid #00000047;
+        padding: 0 5px 0 5px;
+        background: rgba(0, 0, 0, 0.05);
+
+        .editor {
+            height: 100%;
+        }
     }
 
 }
