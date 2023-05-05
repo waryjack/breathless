@@ -1,39 +1,51 @@
 {
-    "breathless.gen.name":"Name",
-    "breathless.gen.pronouns":"Pronouns",
-    "breathless.gen.job":"Job",
-    "breathless.gen.initial":"Initial",
-    "breathless.gen.current.long":"Current",
-    "breathless.gen.success.full":"Success!",
-    "breathless.gen.success.withcost":"Success, at a cost",
-    "breathless.gen.fail":"Failure",
-    "breathless.gen.vulnerable":"Vulnerable",
-    "breathless.gen.sheet.maxitems":"Max Items",
-    "breathless.gen.new.skill":"New Skill",
-    "breathless.gen.new.gear":"New Item",
-    "breathless.gen.roll":"Roll",
-    "breathless.gen.result": "Result:",
+    "breathless.gen": {
+        "name":"Name",
+        "pronouns":"Pronouns",
+        "job":"Job",
+        "initial":"Initial",
+        "current.long":"Current",
+        "success.full":"Success!",
+        "success.withcost":"Success, at a cost",
+        "fail":"Failure",
+        "vulnerable":"Vulnerable",
+        "sheet.maxitems":"Max Items",
+        "new.skill":"New Skill",
+        "new.gear":"New Item",
+        "roll":"Roll",
+        "result": "Result:",
+        "catch":"Catch your Breath",
+        "loot.check":"Check for Loot",
+        "lay-low": "Lay Low Awhile"
+    },
 
-    "breathless.item.placeholder.name": "Name",
-    "breathless.item.d4": "d4",
-    "breathless.item.d6": "d6",
-    "breathless.item.d8": "d8",
-    "breathless.item.d10": "d10",
-   
-    "breathless.dialogs.delete.title":"Delete Item",
-    "breathless.dialogs.delete.confirm":"Are you sure you want to delete this item?",
-    "breathless.dialogs.labels.cancel":"Cancel",
-    "breathless.dialogs.labels.yes":"Yes",
-    "breathless.dialogs.labels.initial_die": "Initial Die",
-    "breathless.dialogs.labels.current_die": "Current Die",
-    
+    "breathless.tab": {
+        "main": "Main",
+        "bio": "Bio"
+    },
+
+    "breathless.item": {
+        "placeholder.name": "Name",
+        "d4": "d4",
+        "d6": "d6",
+        "d8": "d8",
+        "d10": "d10"
+    },
+
+    "breathless.dialogs": {
+        "delete.title":"Delete Item",
+        "delete.confirm":"Are you sure you want to delete this item?",
+        "labels.cancel":"Cancel",
+        "labels.yes":"Yes",
+        "labels.initial_die": "Initial Die",
+        "labels.current_die": "Current Die"
+    },
+
     "breathless.chatMessage.healUsed": "<b>NOTE</b>: {pcName} used Catch Your Breath.",
+    "breathless.chatMessage.layLowUsed": "<b>NOTE</b>: {pcName} used Lay Low Awhile.",
     "breathless.error.lootCheck": "There is no Loot table set up. Create a new Rollable Table called \"Loot\", then try again.",
     
     "breathless.interface.warning.maxstorage": "You can't add anything else to your {storeName}.",
-
-    "breathless.gen.catch":"Catch your Breath",
-    "breathless.gen.loot.check":"Check for Loot",
 
     "breathless.ActorNotes": "Notes",
     "breathless.npc": {
@@ -64,6 +76,11 @@
             "name": "Job Custom Name",
             "hint": "Set the displayed name for the Job label in your game (e.g. Profession, Role, etc.)",
             "default": "Job"
+        },
+        "lay_low": {
+            "name": "Lay Low Awhile Custom Name",
+            "hint": "Set the displayed name for the 'Lay Low Awhile' button in your game (e.g. Take a break, etc.)",
+            "default": "Lay Low Awhile"
         },
         "loot_name": {
             "name": "Loot Custom Name",

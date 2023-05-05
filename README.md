@@ -20,6 +20,7 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
   - Name, Pronouns, Job, Stress tracker
   - Medkit button (heals Stress when clicked)
   - Stunt button, rolls D12 when clicked
+  - Notes tab
 - Ability add and use Skills, dice type will change with use
 - Ability add and use Gear, dice type will change with use
 - System settings to help modify the sheet to match different versions of Breathless games
@@ -28,11 +29,9 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 ## To Be Done
 
 - Create a sample Loot table
-
+- Add a few Gasps as settings
+- Add a Dark version of the character sheet, use settings to change
 #### Character Sheet
-
-- Show the character image
-- Notes page
 - Add some Gasps as optional rules
 
 ## How to Install

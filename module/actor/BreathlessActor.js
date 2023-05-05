@@ -231,10 +231,35 @@ export class BreathlessActor extends Actor {
         return item.update({[updateField]:stepdown});
     }
 
-    // The SRD says that you only reset skills when you "catch your breath"
+    layLow() {
+        let stress = this.system.stress;
+        let states = stress.states;
+        
+        // clear 1 stress
+        if(states[3] == true) {
+            states[3] = false;
+        } else if (states[2] == true) {
+            states[2] = false;
+        } else if (states[1] == true) {
+            states[1] = false;
+        } else if (states[0] == true) {
+            states[0] = false;
+        }
+        
+        this.update({"system.stress.states":states});
+        this.sheet.render(true);
+
+        let pcName = this.name;
+        // notify GM that it happened
+        ChatMessage.create({
+            user:game.user_id,
+            rollMode:'gmroll',
+            whisper: ChatMessage.getWhisperRecipients("GM"),
+            content: game.i18n.format('breathless.chatMessage.layLowUsed', {pcName: pcName})
+        });
+    }
+
     catchBreath() {
-        // let stress = this.system.stress;
-        // let states = stress.states;
         let skills = this.items;
 
         // reset all skills to initial levels
@@ -244,20 +269,6 @@ export class BreathlessActor extends Actor {
                 s.update({"system.current":init});
             }
         });
-
-        // clear 1 stress
-        // if(states[3] == true) {
-        //     states[3] = false;
-        // } else if (states[2] == true) {
-        //     states[2] = false;
-        // } else if (states[1] == true) {
-        //     states[1] = false;
-        // } else if (states[0] == true) {
-        //     states[0] = false;
-        // }
-        
-        // this.update({"system.stress.states":states});
-        // this.sheet.render(true);
 
         let pcName = this.name;
         // notify GM that it happened
