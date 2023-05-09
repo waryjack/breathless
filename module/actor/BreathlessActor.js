@@ -261,6 +261,13 @@ export class BreathlessActor extends Actor {
 
     catchBreath() {
         let skills = this.items;
+        let special = this.system.special;
+
+        // reset special
+        if (special.used == true) {
+            this.update({"system.special.used":false});
+            this.sheet.render(true);
+        }
 
         // reset all skills to initial levels
         skills.forEach(s => {
