@@ -11,14 +11,14 @@
       {
         "name": "ephson",
         "url": "https://github.com/philote",
-        "discord": "ephson#3451",
+        "discord": "ephson",
         "mastodon": "@ephson@dice.camp",
         "reddit": "u/ephson"
       }
     ],
     "compatibility": {
       "minimum": 10,
-      "verified": "10.291",
+      "verified": "11.301",
       "maximum": 11
     }, 
     "esmodules": ["module/breathless.js"],

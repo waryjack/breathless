@@ -1,7 +1,5 @@
 # Breathless (Unofficial) System
 
-![Foundry v10](https://img.shields.io/badge/foundry-v10-green)
-
 An unofficial, community-supported system for playing the Breathless TTRPGs (Created by René-Pier Deshaies-Gélinas of [Fari RPGs](https://fari.community/creators/fari-rpgs)) on the Foundry VTT platform.
 
 - The Breathless SRD: https://fari.community/creators/fari-rpgs/projects/breathless
