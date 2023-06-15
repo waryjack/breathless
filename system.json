@@ -2,7 +2,7 @@
     "id": "breathless",
     "title": "Breathless System (Unofficial)",
     "description": "Foundry VTT system for Fari RPG's Breathless system",
-    "version": "v0.2.2",
+    "version": "v0.3.0",
     "authors":[
       {
         "name":"Chris Clouser",
@@ -17,9 +17,9 @@
       }
     ],
     "compatibility": {
-      "minimum": "10",
+      "minimum": 10,
       "verified": "10.291",
-      "maximum": "10"
+      "maximum": 11
     }, 
     "esmodules": ["module/breathless.js"],
     "styles": ["css/breathless.css"],
@@ -30,12 +30,7 @@
         "path": "lang/en.json"
       }
     ],
-    "socket":true,
-    "initiative":null,
-    "gridDistance": 5,
-    "gridUnits": "ft",
     "primaryTokenAttribute": "stress",
-    "secondaryTokenAttribute": null,
     "url": "https://github.com/waryjack/breathless",
     "manifest": "https://github.com/waryjack/breathless/releases/latest/download/system.json",
     "download": "https://github.com/waryjack/breathless/releases/latest/download/breathless.zip",
@@ -46,6 +41,17 @@
         "url": "https://raw.githubusercontent.com/waryjack/breathless/main/screenshot.webp",
         "loop": false,
         "caption": "Breathless screenshot from Foundry VTT."
+      },
+      {
+        "type": "cover",
+        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/cover.webp",
+        "loop": false,
+        "caption": "Cover Images for the Unofficial Breathless package."
+      },
+      {
+        "type": "setup",
+        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/package_image.webp",
+        "thumbnail": "https://raw.githubusercontent.com/waryjack/breathless/main/package_image_thumb.webp"
       }
     ]
 }
