@@ -6,11 +6,19 @@ An unofficial, community-supported system for playing the Breathless TTRPGs (Cre
 - The Breathless Game: https://fari-rpgs.itch.io/breathless
 - The Breathless Games Collection: https://itch.io/c/2381440/breathless-games
 
-![A screenshot of the Breathless character sheet and chat output in Foundry VTT](screenshot.webp)
+![](https://img.shields.io/badge/Foundry-v10-informational)
+![](https://img.shields.io/badge/Foundry-v11-informational)
+![](https://img.shields.io/badge/Foundry-v12-informational)
+<!--- Downloads @ Latest Badge -->
+![Latest Release Download Count](https://img.shields.io/github/downloads/waryjack/breathless/latest/system.zip)
+<!--- Forge Bazaar Install % Badge -->
+![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fbreathless&colorB=4aa94a)
+
+![A screenshot of the Breathless character sheet and chat output in Foundry VTT](./assets/screenshot.webp)
 
 ### Settings
 
-![A screenshot of the Breathless settings page in Foundry VTT](settings.webp)
+![A screenshot of the Breathless settings page in Foundry VTT](./assets/settings.webp)
 
 ## Features
 

@@ -1,4 +1,12 @@
 {
+    "TYPES": {
+        "Actor": {
+            "pc": "Character",
+            "npc": "NPC"
+        },
+        "Item.item": "Item"
+    },
+    
     "breathless.gen": {
         "name":"Name",
         "pronouns":"Pronouns",

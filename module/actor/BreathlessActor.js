@@ -29,7 +29,7 @@ export class BreathlessActor extends Actor {
         }
     }
 
-    rollDice(id) {
+    async rollDice(id) {
         // set some basic variables
         let outcome = "";
         // find the item's current die value, and roll it
@@ -41,7 +41,7 @@ export class BreathlessActor extends Actor {
             return;
         }
 
-        let r = new Roll("1"+die).evaluate({async:false});
+        let r = await new Roll("1"+die).evaluate({ async: true });
         let result = r.total;
 
         // step the die value down until reset
@@ -71,7 +71,7 @@ export class BreathlessActor extends Actor {
         this.outputChatMessage(dialogData);        
     }
 
-    useSpecial() {
+    async useSpecial() {
         // Allow it to toggle back to an unused state with a simple click
         if (this.system.special.used === true) {
             this.update({"system.special.used":false});
@@ -86,7 +86,7 @@ export class BreathlessActor extends Actor {
         let outcome = "";
 
         // if NOT used, then roll dice and toggle to "used"
-        let r = new Roll("1d12").evaluate({async:false});
+        let r = await new Roll("1d12").evaluate({ async: true });
         let result = r.total;
         let die = "d12";
 
@@ -288,6 +288,9 @@ export class BreathlessActor extends Actor {
     }
     
     outputChatMessage(data) {
+        console.log("TESTING ---");
+        console.log(data.roll_object[0]);
+        console.log(data.roll_object);
         let template = 'systems/breathless/templates/msg/chatmessage.hbs';
         renderTemplate(template, data).then((dlg) => {
             ChatMessage.create({

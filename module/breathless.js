@@ -65,7 +65,6 @@ Hooks.once("init", () => {
 
     // Checks whether a game setting is active
     Handlebars.registerHelper("getSetting", function(arg){
-        // console.warn("Passed Setting Name: ", arg);
         if (arg == "" || arg == "non" || arg == undefined) { return ; }
         return game.settings.get('breathless', arg);
     });
@@ -83,7 +82,6 @@ Hooks.once("init", () => {
         let result = "Name";
         let truncA = a.substring(0,3);
         result = truncA+result;
-       // console.warn("Custom Name", result);
         return result;
     });
 
@@ -100,9 +98,6 @@ Hooks.once("init", () => {
  * Item and Message Hooks
  */
 Hooks.on("preCreateItem", (item, data) => {
-    // console.log("Item in preCreate: ", item);
-    // console.log("Data in preCreate: ", data);
-
     if(item.parent != null) {
         let iType = item.type;
         let storMax = game.settings.get("breathless", "storage_max");

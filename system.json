@@ -1,8 +1,8 @@
 {
     "id": "breathless",
-    "title": "Breathless System (Unofficial)",
+    "title": "Breathless System",
     "description": "Foundry VTT system for Fari RPG's Breathless system",
-    "version": "v0.3.0",
+    "version": "#{VERSION}#",
     "authors":[
       {
         "name":"Chris Clouser",
@@ -12,14 +12,13 @@
         "name": "ephson",
         "url": "https://github.com/philote",
         "discord": "ephson",
-        "mastodon": "@ephson@dice.camp",
         "reddit": "u/ephson"
       }
     ],
     "compatibility": {
       "minimum": 10,
-      "verified": "11.301",
-      "maximum": 11
+      "verified": "12.325",
+      "maximum": 12
     }, 
     "esmodules": ["module/breathless.js"],
     "styles": ["css/breathless.css"],
@@ -31,27 +30,29 @@
       }
     ],
     "primaryTokenAttribute": "stress",
-    "url": "https://github.com/waryjack/breathless",
-    "manifest": "https://github.com/waryjack/breathless/releases/latest/download/system.json",
-    "download": "https://github.com/waryjack/breathless/releases/latest/download/breathless.zip",
+    "url": "#{URL}#",
+    "manifest": "#{MANIFEST}#",
+    "download": "#{DOWNLOAD}#",
+    "license": "LICENSE",
+    "readme": "README.md",
     "bugs": "https://github.com/waryjack/breathless/issues",
     "media": [
       {
         "type": "screenshot",
-        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/screenshot.webp",
+        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/assets/screenshot.webp",
         "loop": false,
         "caption": "Breathless screenshot from Foundry VTT."
       },
       {
         "type": "cover",
-        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/cover.webp",
+        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/assets/cover.webp",
         "loop": false,
         "caption": "Cover Images for the Unofficial Breathless package."
       },
       {
         "type": "setup",
-        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/package_image.webp",
-        "thumbnail": "https://raw.githubusercontent.com/waryjack/breathless/main/package_image_thumb.webp"
+        "url": "https://raw.githubusercontent.com/waryjack/breathless/main/assets/package_image.webp",
+        "thumbnail": "https://raw.githubusercontent.com/waryjack/breathless/main/assets/package_image_thumb.webp"
       }
     ]
 }
